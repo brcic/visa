@@ -1,0 +1,284 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户注册</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/global.css" media="all">
+    <link rel="stylesheet" href="/css/laycustom.css" media="all">
+    <script src="~/js/jquery-1.10.2.js"></script>
+    <script src="~/layer/layer.js"></script>
+    <script type="text/javascript">
+        function checkreg()
+        {
+            var givname = $("#textGiven").val();
+            if ($.trim(givname) == "")
+            {
+                layer.alert("名字不能为空", function (index) { layer.close(index); $("#textGiven").focus().removeClass("layui-form-danger").addClass("layui-form-danger"); });
+                return false;
+            }
+            if (!(/^[a-zA-Z]+$/.test(givname))) {
+                $("#tip1").show();
+                $("#textGiven").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                return false;
+            }
+            else
+            {
+                $("#tip1").hide();
+                $("#textGiven").removeClass("layui-form-danger");
+            }
+            var surname = $("#textSurname").val();
+            if ($.trim(surname) == "") {
+                layer.alert("姓不能为空", function (index) { layer.close(index); $("#textSurname").focus().removeClass("layui-form-danger").addClass("layui-form-danger"); });
+                return false;
+            }
+            if (!(/^[a-zA-Z]+$/.test(surname))) {
+                $("#tip2").show();
+                $("#textSurname").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                return false;
+            }
+            else
+            {
+                $("#tip2").hide();
+                $("#textSurname").removeClass("layui-form-danger");
+            }
+            var uEmail = $("#textEmail").val();
+            if (!(/^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(uEmail))) {
+                layer.alert("请输入正确的邮件格式.", function (index) { layer.close(index); $("#textEmail").focus(); });
+                return false;
+            }
+            var cellphone = $("#textCellphone").val();
+            if ($.trim(cellphone) == "") {
+                layer.alert("手机号不能为空", function (index) { layer.close(index); $("#textCellphone").focus(); });
+                return false;
+            }
+            var reg = /^1[0-9]{10}$/; //验证规则
+            var flag = reg.test(cellphone); //true
+            if (flag == false)
+            {
+                layer.alert("手机号格式不正确", function (index) { layer.close(index); $("#textCellphone").focus(); });
+                return false;
+            }
+            var pwd = $("#textPwd").val();
+            if ($.trim(pwd) == "") {
+                layer.alert("密码不能为空", function (index) { layer.close(index); $("#textPwd").focus(); });
+                return false;
+            }
+            if (pwd.length < 6)
+            {
+                layer.alert("密码长度不能低于6位.", function (index) { layer.close(index); $("#textPwd").focus(); });
+                return false;
+            }
+            var pwd2 = $("#textPwd2").val();
+            if ($.trim(pwd2) == "") {
+                layer.alert("确认密码不能为空", function (index) { layer.close(index); $("#textPwd2").focus(); });
+                return false;
+            }
+            if (pwd != pwd2)
+            {
+                layer.alert("两次输入的密码不一致.", function (index) { layer.close(index); $("#textPwd2").focus(); });
+                return false;
+            }
+            var verifycode = $("#textVerification").val();
+            if ($.trim(verifycode) == "") {
+                layer.alert("验证码不能为空!", function (index) { layer.close(index); $("#textVerification").focus(); });
+                return false;
+            }
+            var layerid = layer.msg('验证中...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+            $.ajax({
+                type: 'POST',
+                url: '/Account/Register',
+                data: { givname: givname, surname: surname, uEmail: uEmail, cellphone: cellphone, pwd: pwd, verifycode: verifycode },
+                dataType: 'json',
+                success: function (data) {
+                    layer.close(layerid)
+                    if (data.status == "1")
+                    {
+                        layer.alert(data.message, function (index) {  window.location.href = "/Account/Login";});
+                    }
+                    else
+                        layer.msg(data.message, { time: 2000 });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    layer.close(layerid)
+                }
+            });
+            return true;
+        }
+        function checkgiven()
+        {
+            var givname = $("#textGiven").val();
+            if (givname != "")
+            {
+                if (!(/^[a-zA-Z]+$/.test(givname))) {
+                    $("#tip1").show();
+                    $("#textGiven").removeClass("layui-form-danger").addClass("layui-form-danger");
+                }
+                else {
+                    $("#tip1").hide();
+                }
+            }
+            else
+            {
+                $("#tip1").hide();
+            }
+        }
+        function checksur() {
+            var surname = $("#textSurname").val();
+            if (surname != "") {
+                if (!(/^[a-zA-Z]+$/.test(surname))) {
+                    $("#tip2").show();
+                    $("#textSurname").removeClass("layui-form-danger").addClass("layui-form-danger");
+                }
+                else {
+                    $("#tip2").hide();
+                }
+            }
+            else {
+                $("#tip2").hide();
+            }
+        }
+        function changever()
+        {
+            $("#imgverify").attr("src", "/Account/ImgValidCode?r="+Math.random());
+        }
+    </script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+   
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">签证预约</div>
+        </div>
+    </div>
+    <div class="layui-container logincot">
+
+        <div class="layui-row loginrow">
+            <div class="layui-col-xs8 layui-col-xs-offset3">
+                <h1 style="font-size: 24px;">新用户注册</h1>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <div>名<span class="mandatory">*</span></div>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="text" id="textGiven" onkeyup="checkgiven()" style="text-transform:uppercase;" maxlength="32" lay-verify="required" placeholder="名" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form" style="color:#ff0000;display:none" id="tip1">
+                  请输入字母
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <div>姓<span class="mandatory">*</span></div>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="text" id="textSurname" onkeyup="checksur()" style="text-transform:uppercase;" maxlength="36" lay-verify="required" placeholder="姓" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form" style="color:#ff0000;display:none" id="tip2">
+                    请输入字母
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <div>电子邮箱<span class="mandatory">*</span></div>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="text" id="textEmail" maxlength="100" lay-verify="required" placeholder="电子邮箱" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <div>电话号码<span class="mandatory">*</span></div>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="text" id="textCellphone" maxlength="20" lay-verify="required" placeholder="手机号码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <div>密码<span class="mandatory">*</span></div>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="password" id="textPwd" maxlength="36" lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <div>确认密码<span class="mandatory">*</span></div>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="password" id="textPwd2" maxlength="36" lay-verify="required" placeholder="确认密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <a href="javascript:changever()"><img id="imgverify" class="loginimg" src="/Account/ImgValidCode" /></a>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="text" id="textVerification" maxlength="5" lay-verify="required" placeholder="请输入图形所示识别码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md5 layui-col-md-offset4">
+                <a href="/Account/Login" class="layui-btn layui-btn-big">返回登录</a>
+                <input type="reset" class="layui-btn layui-btn-big" value="重置" style="background-color:#676767" />
+                <a href="javascript:checkreg()" class="layui-btn layui-btn-big">提交</a>
+            </div>
+        </div>
+
+        @*<div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md4 layui-col-md-offset4">
+                <p>免责声明：注册信息将在从今天起的30天后失效</p>
+            </div>
+
+        </div>*@
+
+        <div class="layui-footer footer footer-demo loginfoot">
+            <div class="layui-main">
+                <p>Copyright 2017. BRCIC Global Visa Center. All Rights Reserved</p>
+            </div>
+        </div>
+
+    </div>
+  
+
+
+</body>
+</html>

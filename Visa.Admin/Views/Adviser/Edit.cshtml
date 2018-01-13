@@ -1,0 +1,131 @@
+﻿@model Visa.Domain.SysAdmin
+<script src="~/layer/layer.js"></script>
+<script type="text/javascript">
+    function checkadd() {
+        var username = $("#UserName").val();
+        if ($.trim(username) === "") {
+            layer.alert("账号不能为空！", function (i) { layer.close(i); $("#UserName").focus(); });
+            return false;
+        }
+        var userpwd = $("#UserPwd").val();
+        if (userpwd == "") {
+            layer.alert("密码不能为空！", function (i) { layer.close(i); $("#UserPwd").focus(); });
+            return false;
+        }
+        var userxm = $("#UserXm").val();
+        if (userxm == "") {
+            layer.alert("姓名不能为空！", function (i) { layer.close(i); $("#UserXm").focus(); });
+            return false;
+        }
+
+        layer.msg('正在提交...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+        return true;
+    }
+    function isDigit(s) {
+        var patrn = /^[0-9]{1,20}$/;
+        if (!patrn.exec(s)) return false;
+        return true;
+    }
+</script>
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">员工管理</a>
+        </li>
+        <li>
+            <a href="/Adviser/List">员工信息</a>
+        </li>
+        <li>
+            编辑用户
+        </li>
+    </ul><!-- /.breadcrumb -->
+
+</div>
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    @Html.Partial("_PartialSetting")
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            @using (Html.BeginForm("Edit", "Adviser", FormMethod.Post, new { @id = "frmAdd", @name = "frmAdd", @role = "form", @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                 <!-- #section:elements.form -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="UserName">账号</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="UserPwd">密码</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.UserPwd, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="UserPhone">电话</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.UserPhone, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="UserCountry">负责国家</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.UserCountry, ViewData["vcountry"] as List<SelectListItem>)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="Permission">权限组</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.Permission, ViewData["vperm"] as List<SelectListItem>)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="UserXm">姓名</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.UserXm, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="Department">部门</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Department, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="UserMark">备注</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.UserMark, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-2 col-md-9">
+                        <button class="btn btn-info" onclick="return checkadd()" type="submit">
+                            <i class="ace-icon fa fa-check bigger-120"></i>
+                            保存
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <a class="btn" href="javascript:history.go(-1)">
+                            <i class="fa fa-arrow-left bigger-120"></i>
+                            返回
+                        </a>
+                    </div>
+                </div>
+            }
+            <div></div>
+        </div>
+    </div>
+</div>

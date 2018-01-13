@@ -1,0 +1,79 @@
+﻿@model Visa.Domain.vArticle
+@{
+    Layout = null;
+}
+
+@{
+    string regionName = ViewContext.RouteData.Values["region"].ToString();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8; IE=9; IE=10; IE=EDGE" />
+    <title>客户服务务</title>
+    <meta name="keywords" content="客户服务">
+    <meta name="description" content="客户服务">
+    <meta name="viewport" id="myViewport" content="width=device-width, initial-scale=1.0" />
+    @Html.Partial("_PartialCss")
+
+</head>
+<body>
+    <div class="container">
+        @Html.Partial("_PartialHeader")
+        <section class="banner">
+            <div class="wrapper">
+                <div class="breadcrumb padt20">
+                    <ul class="clearfix">
+                        <li><a href="index.html">首页</a></li>
+                        <li>&gt;</li>
+                        <li><a href="general_information.html">一般资讯</a></li>
+                        <li>&gt;</li>
+                        <li><a href="customer_service.html">客户服务</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="center text_center padt25">
+                    <h1 class="caps c_blue light fbold">客户服务</h1>
+                </div>
+            </div>
+        </section>
+        <div class="wrapper">
+            <section class="steps">
+                <ul class="step_icons">
+                    <li class="step01 ico marr94"><a href="/@regionName/Step/Know_Your_Visa_Type" title="准备您的申请"></a></li>
+                    <li class="step02 ico marr94"><a href="/@regionName/Step/How_To_Apply" class="ico_active" title="如何申请"></a></li>
+                    <li class="step03 ico"><a href="/@regionName/Step/After_Submission" title="完成递交"></a></li>
+                    <li class="clear ico"></li>
+                </ul>
+            </section>
+            <!--Responsive-->
+            <div class="home_step_responsive_parent">
+                <div class="home_step_responsive">
+                    <div class="step01 ico"><a href="/@regionName/Step/Know_Your_Visa_Type" title="准备您的申请"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step02 ico"><a href="/@regionName/Step/How_To_Apply" title="如何申请"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step03 ico"><a href="/@regionName/Step/After_Submission" title="完成递交"></a></div>
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <section>
+                <div class="wrapper">
+                    <div class="pad22 mart15">
+                        <h4 class="tourist_title_main marb15 caps">客户服务</h4>
+                        <div class="tourist_text">
+                            @Html.Raw(Model.ArticleContent)
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>
+</html>

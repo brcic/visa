@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Visa.Domain.vDistrict>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+   
+    <title>全球签证中心</title>
+    <meta name="description" content="丝路全球签证中心">
+    <meta name="keywords" content="丝路全球签证中心">
+    <meta name="viewport" id="myViewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/png">
+    <link href="/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/dd.css" rel="stylesheet" type="text/css">
+    <link href="/css/indexstyle.css" rel="stylesheet" type="text/css">
+    <link href="/css/media-queries-index.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.dd.js"></script>
+    <script type="text/javascript" src="/js/jquery.style.js"></script>
+    <script type="text/javascript" src="/js/TweenMax.min.js"></script>
+    <script type="text/javascript" src="/js/custom-isotope.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <!--[if lt IE 9]>
+        <link href="/css/ie8.css" rel="stylesheet">
+        <script src="/js/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="vfs_global_logo"> <a href="http://www.globalvisacenter.org" ><img src="/images/gvc-global-logo.png" alt="丝路全球签证中心" /></a> </div>
+            <div class="heading_language_wrapper">
+                <div class="flag_heading_wrapper">
+                    <h2>丝路全球签证中心</h2>
+                    
+                </div>
+               
+            </div>
+        </div>
+    </header>
+    <div class="wrapper pad_footer">
+        <section class="top_content_wrapper">
+            <h1>欢迎来到丝路全球签证中心</h1>
+            <p>请选择您希望申请的地区和国家</p>
+            <ul class="region_list column_list type1" data-equal_children_height=".">
+                <li>
+                    <span>
+                        <a href="#" data-filter="*" class="active">
+                            <span>全部</span>
+                            <div class="image_hover_wrapper">
+                                <div class="normal"> <img src="/images/map/all.jpg" alt="All Map" /> </div>
+                                <div class="hover"> </div>
+                            </div>
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a href="#" data-filter=".asia-pacific">
+                            <span>亚太地区</span>
+                            <div class="image_hover_wrapper">
+                                <div class="normal"> <img src="/images/map/asia-pacific.jpg" alt="Asia Pacific" /> </div>
+                                <div class="hover"> </div>
+                            </div>
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a href="#" data-filter=".africa-middle-east">
+                            <span>非洲和中东</span>
+                            <div class="image_hover_wrapper">
+                                <div class="normal"> <img src="/images/map/africa.jpg" alt="Africa and Middle East" /> </div>
+                                <div class="hover"> </div>
+                            </div>
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a href="#" data-filter=".europe">
+                            <span>欧洲</span>
+                            <div class="image_hover_wrapper">
+                                <div class="normal"> <img src="/images/map/europe.jpg" alt="Europe" /> </div>
+                                <div class="hover"> </div>
+                            </div>
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a href="#" data-filter=".americas">
+                            <span>美洲</span>
+                            <div class="image_hover_wrapper">
+                                <div class="normal"> <img src="/images/map/america.jpg" alt="Americas" /> </div>
+                                <div class="hover"> </div>
+                            </div>
+                        </a>
+                    </span>
+                </li>
+            </ul>
+            <div class="responsive">
+                <div class="region_dropdown_wrapper">
+                    <label>Select Region</label>
+                    <br>
+                    <select></select>
+                </div>
+                <div class="country_dropdown_wrapper">
+                    <label>Select Resident Country</label>
+                    <br>
+                    <select></select>
+                </div>
+            </div>
+        </section>
+        <div class="country_list_wrapper">
+            @{
+                
+                Dictionary<int, string> dic= new Dictionary<int, string>();
+                dic.Add(1, "asia-pacific");
+                dic.Add(2,"africa-middle-east");
+                dic.Add(3,"europe");
+                dic.Add(4,"americas");
+            }
+            <ul class="column_list type1" data-equal_children_height=".">
+                @foreach (var item in Model)
+                {
+                    <li class="@dic[item.ContinentId]"> <span> <a href="/@item.CountryCode/Home"> <span>@item.ChineseName</span> <img src="/img/@(item.CountryName.Replace(" ","-").Replace("'","")).jpg" alt="@item.CountryName Flag" /> </a> </span> </li>
+                }
+              
+            </ul>
+        </div>
+    </div>
+    <footer>© 2017 GVC Global Group. All Rights Reserved. </footer>
+
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Visa.Domain.ApplyList>
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>申请人列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" media="all">
+    <script src="~/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.use(['layer',  'element'], function () {
+            var layer = layui.layer, element = layui.element;
+
+          
+        });
+
+    </script>
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+       @Html.Partial("_PartialHeader")
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 16px;">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>重新预约</legend>
+                </fieldset>
+                <span class="layui-breadcrumb" > <a href="">重新预约</a> <a><cite>预约确认单</cite></a> </span>
+                <p><span style="color:red">已受理的申请单不能重新预约</span></p>
+                <div class="layui-table-body layui-table-main">
+                    <table class="layui-table">
+                        
+                        <thead>
+                            <tr>
+                                <th>预约序号</th>
+                                <th>目的地国</th>
+                                <th>签证类型</th>
+                                <th>签证地点</th>
+                                <th>操作时间</th>
+                                <th>预约时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ApplyNumber</td>
+                                    <td>@item.VisitCountry</td>
+                                    <td>@item.QzType</td>
+                                    <td>@item.PlaceName</td>
+                                    <td>@item.AddTime</td>
+                                    <td>@item.DateName @item.TimeRange</td>
+                                    @if (item.CheckStatus == 0)
+                                    {
+                                        <td>未受理</td>
+                                    }
+                                    else
+                                    {
+                                        <td>已提交</td>
+                                    }
+                                    <td>
+                                        @if ((DateTime.Now - item.AddTime).TotalHours >= 24)
+                                        {
+                                            if (item.CheckStatus == 0)
+                                            {
+                                                <a href="/Order/Appointment2/@item.Id">重新预约</a>
+                                            }
+                                            else
+                                            {
+                                                <a >不可操作</a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <a>@( (int)(24-(DateTime.Now - item.AddTime).TotalHours)) 小时剩余</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_PartialFooter")
+    </div>
+   
+</body>
+</html>

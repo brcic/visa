@@ -1,0 +1,142 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>重新预约</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" media="all">
+    <link rel="stylesheet" href="/css/laycustom.css" media="all">
+    <script src="~/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        function checkfind()
+        {
+            var number = $("#textNumber").val();
+            var passport = $("#textPassport").val();
+            var email = $("#textEmail").val();
+            var phone = $("#textPhone").val();
+            if ($.trim(number) == "" && $.trim(passport) == "" && $.trim(email) == "" && $.trim(phone) == "")
+            {
+                $("#form-empty-err-msg").show();
+                return false;
+            }
+            else
+            {
+                $("#form-empty-err-msg").hide();
+            }
+            var url= "/Afresh/List?sp=pf";
+            if (number != "")
+                url += "&number=" + number;
+            if (passport != "")
+                url += "&passport=" + passport;
+            if (email != "")
+                url += "&email=" + email;
+            if (phone != "")
+                url += "&phone=" + phone;
+            var layerid = layer.msg('验证中...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+            $.ajax({
+                type: 'POST',
+                url: '/Afresh/Find',
+                data: { number: number, passport: passport, email: email, phone: phone },
+                dataType: 'json',
+                success: function (data) {
+                    layer.close(layerid);
+                    if (data.status == "1")
+                    { window.location.href = url; }
+                    else if (data.status == "2")
+                    {
+                        $("#err-msg").html("未找到记录！").show();
+                    }
+                    else if (data.status == "3") {
+                        $("#err-msg").html("您您不能重新预约。您可以在实际申请之日后1天预约！").show();
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) { layer.close(layerid); }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+       @Html.Partial("_PartialHeader")
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 10px;">
+                <h2 class="projecttitle">搜索预约</h2>
+                <span class="layui-breadcrumb" > <a >重新预约</a> <a><cite>搜索预约</cite></a> </span>
+                <div id="err-msg" style="display:none">
+                    您不能重新预约。您可以在实际申请之日后1天预约
+                </div>
+                <p class="note">Any one of the search parameters is mandatory to search and fetch details.</p>
+                <p class="note">请使用预约确认号码进行操作，预约确认号码已发至您的邮箱地址。请注意，此预约确认号码在您预约后系统自动生成。若您未在收件箱找到预约确认号码，建议您在垃圾邮件或垃圾文件夹中查找。</p>
+                <div id="form-empty-err-msg" style="display:none">
+                    请至少输入一项
+                </div>
+                <div class="layui-table-body layui-table-main">
+                    <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                        <tr>
+                            <td>预约序号<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textNumber" lay-verify="required" placeholder="预约序号" autocomplete="off" class="layui-input">
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td>护照号码<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textPassport" lay-verify="required" placeholder="护照号码" autocomplete="off" class="layui-input">
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>电子邮箱<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textEmail"  lay-verify="required" placeholder="电子邮箱" autocomplete="off" class="layui-input">
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td>电话号码<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textPhone"  lay-verify="required" placeholder="电话号码" autocomplete="off" class="layui-input">
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <br>
+                <div>
+                    <a href="/doc/element/layout.html"  class="layui-btn layui-btn-big">搜索</a>
+                </div>
+
+            </div>
+          
+        </div>
+        @Html.Partial("_PartialFooter")
+      </div>
+</body>
+</html>

@@ -1,0 +1,1601 @@
+body {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    background-color: #ffffff;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+a:link {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:active {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.maindiv {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    height: auto;
+    width: 986px;
+    margin: 0 auto;
+    /*border-top: 1px solid #dbdcdd;*/
+    border-bottom: 1px solid #dbdcdd;
+    border-left: 1px solid #dbdcdd;
+    border-right: 1px solid #dbdcdd;
+}
+
+.backlink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 10px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.backlink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 10px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.backlink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 10px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.middleheader1 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.backlink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 10px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.rightheaderlink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.newslink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #200473;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #200473;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslanding:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #848381;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslanding:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #848381;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslanding:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #848381;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.newslanding:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #848381;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.topbararea {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    height: 125px;
+    background: url(../images/topbarbg.gif) repeat-x;
+    padding-left: 7px;
+}
+
+.topbarareawhite {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    height: 125px;
+    padding-left: 7px;
+    background-color: #FFF;
+}
+
+.topbarleft {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    height: 112px;
+    float: left;
+    padding-top: 32px;
+    margin-bottom: -20px;
+}
+
+.topbarright {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    margin-right: 5px;
+    color: #000000;
+    height: 112px;
+    margin-top: 2px;
+    float: right;
+}
+
+.topbarrightlink {
+    float: LEFT;
+    padding-right: 12px;
+    margin-top: -4px;
+}
+
+.topnavigation {
+    float: right;
+    padding-right: 12px;
+    margin-top: 77px;
+}
+
+.topbarrightwhite {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    width: 231px;
+    height: 125px;
+    background: url(../images/toprightbg_white.gif) no-repeat;
+    float: right;
+    padding-top: 81px;
+}
+
+.toprightlink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.toprightlink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.toprightlink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.toprightlink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.flag {
+    width: 81px;
+    height: 53px;
+    float: left;
+    margin-right: 13px;
+}
+
+.applyheading {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #200473;
+    font-weight: bold;
+    float: left;
+    text-transform: uppercase;
+    margin-bottom: 17px;
+    margin-top: -3px;
+}
+
+.countryheader {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 30px;
+    color: #848381;
+    float: left;
+    margin-left: -66px;
+    margin-top: 25px;
+}
+
+.logoline {
+    margin-top: 28px;
+    width: 1px;
+    height: 29px;
+    float: left;
+    background-color: #200473;
+    margin-left: 49px;
+    margin-right: 10px;
+}
+
+.fromheading {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #200473;
+    font-weight: bold;
+    text-transform: uppercase;
+    float: left;
+    margin-top: 58px;
+    margin-bottom: 6px;
+}
+
+.countryheader2 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 18px;
+    color: #848381;
+    font-weight: normal;
+    float: left;
+    text-transform: uppercase;
+}
+
+.leftmenuhighlights {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 216px;
+    height: 35px;
+    background: url(../images/leftbttn_o.gif) no-repeat;
+}
+
+.leftmenu {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 216px;
+    height: 42px;
+    background: url(../images/leftbttn.gif);
+}
+
+.leftmenusubmenu {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 10px;
+    color: #002f67;
+    font-weight: bold;
+    width: 216px;
+    height: auto;
+}
+
+.applytext {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.steptextnew {
+    color: #200473;
+    font-size: 12px;
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.steptext {
+    float: left;
+    color: #fff;
+    width: 44px;
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    height: 21px;
+    font-size: 11px;
+    margin-right: 3px;
+    text-align: center;
+    height: 20px;
+    background-color: #002f67;
+    padding-bottom: 3px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.steptextright {
+    color: #fff;
+    width: 44px;
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    height: 30px;
+    font-size: 11px;
+    text-align: center;
+    height: 20px;
+    background-color: #002f67;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.submenuhighlight:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.submenuhighlight:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.submenuhighlight:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.submenuhighlight:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #200473;
+    font-weight: bold;
+}
+
+.submenulink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.submenulink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.submenulink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #6c6e70;
+    font-weight: bold;
+}
+
+.submenulink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #6c6e70;
+    font-weight: bold;
+}
+
+.leftbottomlink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #6c6e70;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 28px;
+}
+
+.leftbottomlink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #6c6e70;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 28px;
+}
+
+.leftbottomlink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 28px;
+}
+
+.leftbottomlink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 10px;
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 28px;
+}
+
+.leftarea {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #848381;
+    width: 216px;
+    height: auto;
+}
+
+.middlearea {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #000000;
+    width: 523px;
+    padding-bottom: 30px;
+    padding-top: 3px;
+    line-height: 18px;
+    text-align: left;
+    border-top: 1px solid #dedfe0;
+    border-bottom: 1px solid #dedfe0;
+    border-left: 1px solid #dedfe0;
+    border-right: 1px solid #dedfe0;
+}
+
+.whitetext {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.middleareatext {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.middleareatext2 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #848381;
+    text-decoration: none;
+    font-weight: normal;
+    line-height: 18px;
+}
+
+.whitebody {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: normal;
+    line-height: 18px;
+}
+
+.rightarea {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #848381;
+    width: 216px;
+    height: auto;
+    border-top: 1px solid #dedfe0;
+    border-bottom: 1px solid #dedfe0;
+    border-left: 1px solid #dedfe0;
+    border-right: 1px solid #dedfe0;
+}
+
+.breadcrumbarea {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    width: 100%;
+    margin-bottom: 27px;
+    text-transform: uppercase;
+}
+
+.breadcrumbarea1 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    width: 500px;
+    margin-bottom: 27px;
+    text-transform: uppercase;
+}
+
+.breadcrumblink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 10px;
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.breadcrumblink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 10px;
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.breadcrumblink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 10px;
+    color: #6c6e70;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.breadcrumblink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 10px;
+    color: #6c6e70;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.introheader {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    padding-top: 11px;
+    padding-left: 10px;
+    padding-bottom: 13px;
+}
+
+.middleheader {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    padding-left: 8px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.middleheader1 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    padding-left: 8px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 20px;
+}
+
+.middleheader2 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 17px;
+    color: #200473;
+    padding-left: 8px;
+}
+
+.leftheader {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+    margin-left: 8px;
+    line-height: 25px;
+    letter-spacing: -1px;
+}
+
+.textbox {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #848381;
+    width: 200px;
+    height: auto;
+    border: 1px dotted #999;
+}
+
+.dropdown {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 12px;
+    color: #200473;
+    width: 40px;
+    height: auto;
+    border: 1px solid #999999;
+    background-color: #ffffff;
+}
+
+.rightheader {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    letter-spacing: -1px;
+}
+
+.righttext {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    line-height: 18px;
+}
+
+.contactarea {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #200473;
+    width: 216px;
+    height: auto;
+    margin-left: 762px;
+    padding-top: 15px;
+    margin-top: 7px;
+    border-top: 1px solid #dedfe0;
+    border-bottom: 1px solid #dedfe0;
+    border-left: 1px solid #dedfe0;
+    border-right: 1px solid #dedfe0;
+}
+
+.generalinflink {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #200473;
+    width: 204px;
+    height: auto;
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-left: 10px;
+    border-top: 1px solid #dedfe0;
+    border-bottom: 1px solid #dedfe0;
+    border-left: 1px solid #dedfe0;
+    border-right: 1px solid #dedfe0;
+}
+
+.leftad {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #200473;
+    width: 216px;
+    height: 300px;
+    background-color: #002f67;
+}
+
+.topbarright {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #000000;
+    width: 231px;
+    height: 112px;
+    margin-top: 2px;
+    background: url(../images/toprightbg.gif) no-repeat;
+    float: right;
+}
+
+.countrylink2 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #a4a4a4;
+    font-weight: bold;
+}
+
+.countrylink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #a4a4a4;
+    font-weight: bold;
+}
+
+.countrylink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #a4a4a4;
+    font-weight: bold;
+}
+
+.countrylink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.countrylink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.tabbttn {
+    margin-right: -7px;
+    float: right;
+}
+
+.border1 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #200473;
+    width: 214px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #dedfe0;
+    border-bottom: 1px solid #dedfe0;
+    border-left: 1px solid #dedfe0;
+    border-right: 1px solid #dedfe0;
+}
+
+.border2 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #200473;
+    width: 214px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #dedfe0;
+    border-bottom: 1px solid #dedfe0;
+    border-left: 1px solid #dedfe0;
+    border-right: 1px solid #dedfe0;
+}
+
+.outLine {
+}
+
+.homedottedline {
+    border-top: 1px dotted #dbdcdd;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 502px;
+}
+
+.innerline {
+    border-top: 1px solid #dbdcdd;
+    margin-top: 15px;
+    margin-bottom: -6px;
+    width: 522px;
+}
+
+.trackapplication {
+    padding-left: 13px;
+    margin-bottom: 10px;
+    width: 340px;
+    float: left;
+}
+
+.trackapplicationline {
+    border-bottom: 1px dotted #dbdcdd;
+    margin-left: 12px;
+    margin-top: -20px;
+    margin-bottom: 19px;
+    width: 340px;
+    float: left;
+}
+
+.submitbttn:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #717276;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: 1px dotted #999;
+}
+
+.submitbttn:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #717276;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 18px;
+    padding-left: 5px;
+    padding-right: 3px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    border: 1px dotted #999;
+}
+
+.submitbttn:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #949597;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: 1px dotted #999;
+}
+
+.submitbttn:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #949597;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: 1px dotted #999;
+}
+
+
+
+.disclaimerlink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    line-height: 18px;
+}
+
+.disclaimerlink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    line-height: 18px;
+}
+
+.disclaimerlink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 11px;
+    color: #200473;
+    font-weight: normal;
+    line-height: 18px;
+}
+
+.disclaimerlink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 11px;
+    color: #200473;
+    font-weight: normal;
+    line-height: 18px;
+}
+
+.morelink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #848381;
+    font-weight: bold;
+}
+
+.morelink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #848381;
+    font-weight: bold;
+}
+
+.morelink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 12px;
+    color: #848381;
+    font-weight: bold;
+}
+
+.morelink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: underline;
+    font-size: 12px;
+    color: #848381;
+    font-weight: bold;
+}
+
+.purplelink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #200473;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.purplelink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #200473;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.purplelink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #200473;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.purplelink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 12px;
+    color: #200473;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.imgborder {
+    border-top: 1px solid #dbdcdd;
+    border-bottom: 1px solid #dbdcdd;
+    border-left: 1px solid #dbdcdd;
+    border-right: 1px solid #dbdcdd;
+    padding: 8px 8px 8px 8px;
+    height: 79px;
+    width: 200px;
+}
+
+.imgborder2 {
+    border-top: 1px solid #dbdcdd;
+    border-bottom: 1px solid #dbdcdd;
+    border-left: 1px solid #dbdcdd;
+    border-right: 1px solid #dbdcdd;
+    padding: 8px 8px 8px 8px;
+    height: 79px;
+    width: 128px;
+}
+
+
+
+
+.tab1 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #5f6164;
+    width: auto;
+    height: 31px;
+    font-weight: normal;
+    background: url(../images/tab1.gif) repeat-x;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+}
+
+
+.tab2 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #ffffff;
+    width: auto;
+    height: 31px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    background-color: #200473;
+}
+
+
+.nontab1 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #5f6164;
+    width: auto;
+    height: 31px;
+    font-weight: normal;
+    background: url(../images/tab1.gif) repeat-x;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 1px;
+}
+
+
+.nontab2 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 11px;
+    color: #ffffff;
+    width: auto;
+    height: 31px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 1px;
+    background-color: #ea9423;
+}
+
+
+.tablink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.tablink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.tablink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #5f6164;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.tablink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #5f6164;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.tablinkhigh:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.tablinkhigh:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.tablinkhigh:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.tablinkhigh:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 15px;
+}
+
+.middleheader11 {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-size: 22px;
+    color: #200473;
+    padding-top: 18px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.watermark {
+    bottom: 1px;
+    position: fixed;
+    float: left;
+    width: 175px;
+    height: 205px;
+    background: url(../images/logo-watermark.png) no-repeat;
+    z-index: -1000;
+}
+
+
+     .logo {
+    background-image: url(../img/vfs-logo2.png);
+    background-repeat: no-repeat;
+    float: left;
+    height: 97px;
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 290px;
+}
+
+.header-bar {
+    background-image: url(../images/header-bar.png);
+    background-repeat: no-repeat;
+    float: left;
+    height: 79px;
+    margin-left: 24px;
+    margin-top: 28px;
+    width: 3px;
+}
+
+.header-title {
+    color: #fff;
+    float: left;
+    /*font-family: Trebuchet MS;*/
+     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    margin-right: 18px;
+    margin-top: 37px;
+}
+
+#footer {
+    float: left;
+    /* font-family: segoe_uisemibold; */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    /* padding: 10px 0px; */
+    text-align: center;
+    width: 100%;
+    color: white;
+    background: rgb(0, 48, 93);
+}
+
+.user-loggedin {
+    float: right;
+    /*margin-right: 22px;*/
+    margin-top: 10px;
+}
+
+.topbarright3 {
+    width: 297PX;
+    font-size: 11px;
+    color: #000000;
+    float: right;
+    height: 112px;
+    margin-top: 6px;
+    background: url(../images/vfs-logo2.png) no-repeat;
+    float: right;
+}
+
+.topbararea3 {
+    font-size: 11px;
+    color: #000000;
+    height: 125px;
+    background: #003259;
+    /*margin-bottom: 10px;*/
+}
+
+.topbarleft3 {
+    font-size: 11px;
+    color: #000000;
+    height: 112px;
+    width: 500px;
+    padding-top: 32px;
+}
+
+/*.logo {
+    float: right;
+    margin: 5px;
+}*/
+
+.before {
+    width: 50px;
+    height: 100px;
+    background-image: url(../images/bgcurve_left.png);
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.after {
+    width: 55px;
+    height: 100px;
+    background-image: url(../images/bgcurve_right.png);
+    background-repeat: no-repeat;
+    float: right;
+}
+
+.countrybox {
+    color: #FFFFFF;
+    float: left;
+    margin: 0px 5px;
+    height: 105px;
+}
+
+    .countrybox img {
+        padding: 5px;
+        float: right;
+        position: relative;
+        top: -25px;
+        margin-left: 14px;
+    }
+
+    .countrybox .text {
+        float: left;
+        padding-top: 12px;
+        background-color: white;
+        color: #666666;
+        font: 18px Georgia, "Times New Roman", Times, serif;
+        font-weight: bold;
+    }
+
+
+        /*.countrybox{
+color:#FFFFFF;
+float:left;
+margin:0px 5px;
+width:370px;
+height:105px;
+background:url(../images/bgcurve.png) no-repeat top;
+padding-left:50px;
+}
+
+.countrybox img{
+padding:5px;
+margin-top:23px;
+float:left;
+margin-left:15px;
+}
+
+.countrybox .text{
+float:left;
+color:#666666;
+font: 18px Georgia, "Times New Roman", Times, serif;
+font-weight:bold;
+margin-left:3px;
+padding-top:32px;
+
+}*/
+
+        .countrybox .text .span {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+.languages {
+    color: #fff;
+    float: left;
+    margin: 30px 5px;
+    height: 50px;
+    padding-left: 20px;
+    border-left: 1px solid #fff;
+}
+
+
+    .languages .text {
+        float: left;
+        color: #fff;
+        font: 15px Georgia, "Times New Roman", Times, serif;
+        font-weight: bold;
+        margin: 10px 0 0 10px;
+    }
+
+        .languages .text .span {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
+.clear {
+    clear: both;
+}
+
+.demo {
+    width: 986px;
+    margin: 0 auto;
+}
+
+.rightheaderlink:link {
+    font-size: 20px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink:visited {
+    font-size: 20px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink:hover {
+    font-size: 20px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink:active {
+    font-size: 20px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink1:link {
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink1:visited {
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink1:hover {
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.rightheaderlink1:active {
+    font-size: 22px;
+    color: #200473;
+    text-transform: uppercase;
+}
+
+.middlearea1 {
+    font-size: 12px;
+    color: #000000;
+    padding-bottom: 30px;
+    line-height: 18px;
+    text-align: left;
+    border-top: 1px solid #dedfe0;
+    border-bottom: 1px solid #dedfe0;
+    border-left: 1px solid #dedfe0;
+    border-right: 1px solid #dedfe0;
+}
+
+.newslink:link {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslink:visited {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslink:hover {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #200473;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.newslink:active {
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    text-decoration: none;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.steptextnew1:link {
+    color: #200473;
+    font-size: 12px;
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.steptextnew1:hover {
+    color: #200473;
+    font-size: 12px;
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.steptextnew1:active {
+    color: #200473;
+    font-size: 12px;
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.steptextnew1:visited {
+    color: #200473;
+    font-size: 12px;
+    font-family: Arial, "Arial Narrow", "Arial Black", "Arial Rounded MT Bold", "Arial Unicode MS";
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.bullet_new {
+    background-image: url(../images/bullet_new.gif);
+    background-repeat: no-repeat;
+    background-position: center 11px;
+}
+
+.navigation {
+    float: left;
+    padding: 1px;
+    color: #666666;
+    font: 10px Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 15px;
+    outline: none;
+    text-align: left;
+}
+
+    .navigation ul {
+        padding: 0;
+        margin: 0 auto;
+        outline: none;
+    }
+
+        .navigation ul li {
+            display: block;
+            list-style: none;
+            outline: none;
+        }
+
+            .navigation ul li a {
+                display: block;
+                padding: 8px 20px;
+                margin: 10px 0;
+                width: 175px;
+                text-decoration: none;
+                background: url(../images/leftbttn.gif) top left;
+                background-repeat: repeat-y;
+                color: #000;
+                text-transform: uppercase;
+                line-height: 15px;
+                outline: none;
+            }
+
+                .navigation ul li a:hover {
+                    padding: 8px 20px;
+                    display: block;
+                    width: 175px;
+                    text-decoration: none;
+                    margin: 10px 0;
+                    background: url(../images/leftbttnactive.gif) top left;
+                    background-repeat: repeat-y;
+                    color: #ffffff;
+                    text-transform: uppercase;
+                    line-height: 15px;
+                    outline: none;
+                }
+
+    .navigation .active {
+        padding: 8px 20px;
+        display: block;
+        width: 175px;
+        margin: 10px 0;
+        text-decoration: none;
+        background: url(../images/leftbttnactive.gif) top left;
+        background-repeat: repeat-y;
+        color: #ffffff;
+        outline: none;
+        text-transform: uppercase;
+        line-height: 15px;
+    }

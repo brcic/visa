@@ -1,0 +1,834 @@
+﻿@model Visa.Domain.ApplyForm
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>填写申请表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="~/js/jquery-1.10.2.js"></script>
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/layui/layui.js"></script>
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        @Html.Partial("_PartialHeader")
+        <div class="layui-body">
+
+            <div class="layui-main">
+                @using (Html.BeginForm("Edit", "Apply", new { gxid = ViewData["vgxid"] }, FormMethod.Post, new { @id = "frmAdd", @name = "frmAdd", @role = "form", @class = "layui-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;color:red">
+                        <legend>签证申请表须用大写字母填写完整(中文名除外)</legend>
+                    </fieldset>
+                    <blockquote class="layui-elem-quote">
+                        基本信息
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Surname</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.Surname, new { @class = "layui-input", @placeholder = "姓", @style = "text-transform:uppercase;" })
+                                <input type="hidden" id="hiddensqrid" name="hiddensqrid" value="@ViewData["vsqrid"]"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Given name(s)</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.Givname, new { @class = "layui-input", @placeholder = "名", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Gender</label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.Gender, ViewData["vgender"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Previous name</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.Prename, new { @class = "layui-input", @placeholder = "曾用名或别名", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Name in ethnic</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.Chiname, new { @class = "layui-input", @placeholder = "用本国语言书写的名字" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Current Nationality</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.CNationality, new { @class = "layui-input", @placeholder = "现有国籍", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Former nationality</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.FNationality, new { @class = "layui-input", @placeholder = "曾有国籍", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">出生日期</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.Dateofbirth, new { @class = "layui-input", @placeholder = "出生日期", @readonly = "readonly" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Place of birth</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.Placeofbirth, new { @class = "layui-input", @placeholder = "出生地点", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">ID number</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.IDNumber, new { @class = "layui-input", @placeholder = "身份证号码", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Marital Status</label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.MaritalStatus, ViewData["vmarital"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Contact Address</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.ContactAddress, new { @class = "layui-input", @placeholder = "联系地址", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Contact Telephone</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.Telephone, new { @class = "layui-input", @placeholder = "联系电话", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">当前职业(可选多项)</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Businessman" title="商人">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Government official" title="政府官员">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Company employee" title="公司职员">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Staff of media" title="新闻从业人员">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Teacher" title="教师">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Religious worker" title="宗教人士">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Student" title="学生">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Active duty military personnel" title="现役军人">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Housewife" title="家庭主妇">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Retired" title="退休">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Unemployed" title="无业">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Crew member" title="乘务人员">
+                                <input type="checkbox" name="checkboxOccu" lay-skin="primary" value="Other" title="其他">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Passport type</label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.PassportType, ViewData["vpasstype"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Passport number</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.PassportNumber, new { @class = "layui-input", @placeholder = "护照号码", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Date of issue</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.DateIssue, new { @class = "layui-input", @placeholder = "签发日期", @readonly = "readonly" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Place of issue</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.PlaceIssue, new { @class = "layui-input", @placeholder = "签发地点", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"> Expiry date</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.ExpiryDate, new { @class = "layui-input", @placeholder = "失效日期", @readonly = "readonly" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">加急服务</label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.RushService, ViewData["vrush"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <blockquote class="layui-elem-quote">
+                        旅游信息
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">赴目的国主要事由</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Tourism" title="旅游">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="As resident journalist" title="记者常驻">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Family visit" title="探亲">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="As journalist for temporary news coverage" title="记者临时采访">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Visiting friends" title="访友">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="As resident diplomat or consul" title="常驻外交、领事官员">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Business trip" title="商务">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Commercial performance" title="商业演出">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Meeting" title="会议">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="As crew member" title="执行乘务">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Transit" title="过境">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Study" title="留学">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Employment" title="任职就业">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Official visit" title="官方访问">
+                                <input type="checkbox" name="checkboxPurpose" lay-skin="primary" value="Other" title="其他">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Number of entries</label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.EntryNumber, ViewData["ventry"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Date of entry</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.ProposedDateEntry, new { @class = "layui-input", @placeholder = "预计入境日期", @style = "text-transform:uppercase;" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <blockquote class="layui-elem-quote layui-text">
+                        邀请方的信息（邀请人或邀请单位的名字、地址、电话和邮箱）
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Name</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="InviterName" placeholder="姓名" class="layui-input" style="text-transform:uppercase;" />
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Address</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="InviterAddress" placeholder="地址" class="layui-input" style="text-transform:uppercase;" />
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Phone Number & Email</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="InviterPhone" placeholder="电话" class="layui-input" style="text-transform:uppercase;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Name</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="InviterName" placeholder="姓名" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Address</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="InviterAddress" placeholder="地址" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Phone Number & Email</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="InviterPhone" placeholder="电话" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+                    <blockquote class="layui-elem-quote layui-text">
+                        逗留期间的地点/酒店名称和电话（按时间顺序）
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Name of Place</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidencePlace" placeholder="地点名称" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Address</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidenceAddress" placeholder="地址" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Phone Number</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidencePhone" placeholder="电话" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Name of Place</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidencePlace" placeholder="地点名称" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Address</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidenceAddress" placeholder="地址" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Phone Number</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidencePhone" placeholder="电话" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Name of Place</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidencePlace" placeholder="地点名称" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Address</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidenceAddress" placeholder="地址" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Phone Number</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ResidencePhone" placeholder="电话" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+                    <blockquote class="layui-elem-quote layui-text">
+                        谁将承担往返的费用？
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.WhoCostYourExpense, ViewData["vexpense"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                    </div>
+                    <blockquote class="layui-elem-quote layui-text">
+                        期间有无医疗保险? 如有，请填写保险公司名称及保险账号
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline" style="width:360px;">
+                            @Html.TextBoxFor(model => model.InsuranceCompanyAccount, new { @class = "layui-input", @style = "text-transform:uppercase;" })
+                        </div>
+                    </div>
+
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                        <legend>家庭、工作或学习信息</legend>
+                    </fieldset>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Home address</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.HomeAddress, new { @class = "layui-input", @style = "text-transform:uppercase;", @placeholder = "详细家庭邮政地址" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Home phone</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.HomeTelephone, new { @class = "layui-input", @style = "text-transform:uppercase;", @placeholder = "家庭电话" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Mobile phone</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.MobilePhone, new { @class = "layui-input", @style = "text-transform:uppercase;", @placeholder = "手机号码" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Employer or School</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.EmployerName, new { @class = "layui-input", @style = "text-transform:uppercase;", @placeholder = "工作单位或学校名称" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Mailing address</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.EmployerMail, new { @class = "layui-input", @style = "text-transform:uppercase;", @placeholder = "工作单位或学校邮箱" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Mobile phone</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.MobilePhone, new { @class = "layui-input", @style = "text-transform:uppercase;", @placeholder = "工作单位或学校手机号码" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Emergency Contact</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.EmergencyContact, new { @class = "layui-input", @style = "text-transform:uppercase;", @placeholder = "紧急情况下联系人" })
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Emergency Phone</label>
+                            <div class="layui-input-inline">
+                                @Html.TextBoxFor(model => model.EmergencyPhone, new { @class = "layui-input", @style = "text-transform:uppercase;", @placeholder = "紧急联系人电话" })
+                            </div>
+                        </div>
+                    </div>
+                    <blockquote class="layui-elem-quote layui-text">
+                        是否曾经访问过加纳？如果是，请说明最近一次情况。
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Name of Place</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="VisitedPlace" placeholder="地点" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Purpose</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="VisitedPurpose" placeholder="目的" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Date</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="VisitedDate" placeholder="日期" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Name of Place</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="VisitedPlace" placeholder="地点" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Purpose</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="VisitedPurpose" placeholder="目的" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">Date</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="VisitedDate" placeholder="日期" class="layui-input" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+                    <blockquote class="layui-elem-quote layui-text">
+                        <strong>(I)</strong>是否曾在加纳超过签证或居留许可允许的期限停留？
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.HaveOverstayed, ViewData["voverstay"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                    </div>
+
+                    <blockquote class="layui-elem-quote layui-text">
+                        <strong>(J)</strong> 是否曾经被拒绝颁发加纳签证,或被拒绝进入加纳？
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.HaveRefused, ViewData["vhaverefused"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                    </div>
+
+                    <blockquote class="layui-elem-quote layui-text">
+                        <strong>(K)</strong>  是否在加纳或其他国家有违法记录？
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.HaveCriminal, ViewData["vhaverefused"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                    </div>
+
+                    <blockquote class="layui-elem-quote layui-text">
+                        <strong>(L)</strong>是否患有以下任一种疾病？1： 严重精神疾病2：传染性肺结核病3：可能对公共卫生造成伤害的其它传染病
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.HaveDisease, ViewData["vhavedisease"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                    </div>
+
+                    <blockquote class="layui-elem-quote layui-text">
+                        <strong>(M)</strong> 近30日内是否前往过流行性疾病传染的国家或地区？
+                    </blockquote>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                                @Html.DropDownListFor(model => model.VisitInfected, ViewData["vvisitInfected"] as List<SelectListItem>)
+                            </div>
+                        </div>
+                    </div>
+                    <blockquote class="layui-elem-quote layui-text">
+                        <strong>(N)</strong> 如果对I到M的任何一个问题选择“是”，请在下面详细说明。
+                    </blockquote>
+                    <div class="layui-form-item layui-form-text">
+
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+                            @Html.TextAreaFor(model => model.Givedetail, new { @class = "layui-textarea", @style = "text-transform:uppercase;width:360px" })
+                        </div>
+
+                    </div>
+                    <blockquote class="layui-elem-quote layui-text">
+                        <strong>(O)</strong> 如果有本表未涉及而需专门陈述的其他与签证申请相关的事项，请在此说明。
+                    </blockquote>
+                    <div class="layui-form-item layui-form-text">
+
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+                            @Html.TextAreaFor(model => model.DeclaredAbove, new { @class = "layui-textarea", @style = "text-transform:uppercase;width:360px" })
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="submit" class="layui-btn" onclick="return checkadd()">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+    <script>
+        layui.use(['form', 'layer', 'laydate'], function () {
+            var form = layui.form, layer = layui.layer, laydate = layui.laydate;
+            laydate.render({ elem: '#Dateofbirth', format: 'dd/MM/yyyy', trigger: 'click', value: "01/01/1990" });
+            laydate.render({ elem: '#DateIssue', format: 'dd/MM/yyyy', trigger: 'click' });
+            laydate.render({ elem: '#ExpiryDate', format: 'dd/MM/yyyy', trigger: 'click' });
+            laydate.render({ elem: '#ProposedDateEntry', format: 'dd/MM/yyyy', trigger: 'click' });
+            var occstr = "@ViewData["vOccupation"]";
+
+            $("input[name='checkboxOccu']").each(function () {
+                if (occstr.indexOf($(this).val()) > -1)
+                    $(this).attr("checked", "checked");
+            });
+            var purposestr = "@ViewData["vPurpose"]";
+            $("input[name='checkboxPurpose']").each(function () {
+                if (purposestr.indexOf($(this).val()) > -1)
+                    $(this).attr("checked", "checked");
+            });
+            var inviter1 = "@ViewData["vInviter1"]";
+            var viters1 = inviter1.split(",");
+            for (var i = 0; i < viters1.length; i++) {
+                $("input[name='InviterName']").eq(i).val(viters1[i]);
+            }
+            var inviter2 = "@ViewData["vInviter2"]";
+            var viters2 = inviter2.split(",");
+            for (var i = 0; i < viters2.length; i++) {
+                $("input[name='InviterAddress']").eq(i).val(viters2[i]);
+            }
+            var residence1 = "@ViewData["vResidence1"]";
+            var resid1 = residence1.split(",");
+            for (var i = 0; i < resid1.length; i++) {
+                $("input[name='ResidencePlace']").eq(i).val(resid1[i]);
+            }
+            var residence2 = "@ViewData["vResidence2"]";
+            var resid2 = residence2.split(",");
+            for (var i = 0; i < resid2.length; i++) {
+                $("input[name='ResidenceAddress']").eq(i).val(resid2[i]);
+            }
+            var residence3 = "@ViewData["vResidence3"]";
+            var resid3 = residence3.split(",");
+            for (var i = 0; i < resid3.length; i++) {
+                $("input[name='ResidencePhone']").eq(i).val(resid3[i]);
+            }
+
+            var visited1 = "@ViewData["vVisited1"]";
+            var visites1 = visited1.split(",");
+            for (var i = 0; i < visites1.length; i++) {
+                $("input[name='VisitedPlace']").eq(i).val(visites1[i]);
+            }
+            var visited2 = "@ViewData["vVisited2"]";
+            var visites2 = visited2.split(",");
+            for (var i = 0; i < visites2.length; i++) {
+                $("input[name='VisitedPurpose']").eq(i).val(visites2[i]);
+            }
+            var visited3 = "@ViewData["vVisited3"]";
+            var visites3 = visited3.split(",");
+            for (var i = 0; i < visites3.length; i++) {
+                $("input[name='VisitedDate']").eq(i).val(visites3[i]);
+            }
+            form.render('checkbox');
+            window.checkadd = function () {
+                var surname = $("#Surname").val();
+                if ($.trim(surname) === "") {
+                    layer.alert("姓不能为空.", function (index) {
+                        layer.close(index); $("#Surname").focus();
+                    });
+                    return false;
+                }
+                var givname = $("#Givname").val();
+                if ($.trim(givname) === "") {
+                    layer.alert("名不能为空.", function (index) {
+                        layer.close(index); $("#Givname").focus();
+                    });
+                    return false;
+                }
+                var chiname = $("#Chiname").val();
+                if ($.trim(chiname) === "") {
+                    layer.alert("中文名不能为空.", function (index) {
+                        layer.close(index); $("#Chiname").focus();
+                    });
+                    return false;
+                }
+                var gender = $("#Gender").val();
+                if ($.trim(gender) === "") {
+                    layer.alert("请选择性别.", function (index) {
+                        layer.close(index); $("#Gender").focus();
+                    });
+                    return false;
+                }
+                var cnationality = $("#CNationality").val();
+                if ($.trim(cnationality) === "") {
+                    layer.alert("当前国籍不能为空.", function (index) {
+                        layer.close(index); $("#CNationality").focus();
+                    });
+                    return false;
+                }
+                var dateofbirth = $("#Dateofbirth").val();
+                if ($.trim(dateofbirth) === "") {
+                    layer.alert("出生日期不能为空.", function (index) {
+                        layer.close(index); $("#Dateofbirth").focus();
+                    });
+                    return false;
+                }
+                var placeofbirth = $("#Placeofbirth").val();
+                if ($.trim(placeofbirth) === "") {
+                    layer.alert("出生地点不能为空.", function (index) {
+                        layer.close(index); $("#Placeofbirth").focus();
+                    });
+                    return false;
+                }
+                var idNumber = $("#IDNumber").val();
+                if ($.trim(idNumber) === "") {
+                    layer.alert("身份证号不能为空.", function (index) {
+                        layer.close(index); $("#IDNumber").focus();
+                    });
+                    return false;
+                }
+                var marital = $("#MaritalStatus").val();
+                if ($.trim(marital) === "") {
+                    layer.alert("请选择婚姻状况.", function (index) {
+                        layer.close(index); $("#MaritalStatus").focus();
+                    });
+                    return false;
+                }
+                var contactAddress = $("#ContactAddress").val();
+                if ($.trim(contactAddress) === "") {
+                    layer.alert("联系地址不能为空.", function (index) {
+                        layer.close(index); $("#ContactAddress").focus();
+                    });
+                    return false;
+                }
+                var telephone = $("#Telephone").val();
+                if ($.trim(telephone) === "") {
+                    layer.alert("联系电话不能为空.", function (index) {
+                        layer.close(index); $("#Telephone").focus();
+                    });
+                    return false;
+                }
+
+                var occu = "";
+                $("input[name='checkboxOccu']:checked").each(function () {
+                    occu += $(this).val();
+                });
+                if ($.trim(occu) === "") {
+                    layer.alert("请至少选择一个职业.", function (index) {
+                        layer.close(index);
+                    });
+                    return false;
+                }
+                var passportType = $("#PassportType").val();
+                if ($.trim(passportType) === "") {
+                    layer.alert("请选择护照种类.", function (index) {
+                        layer.close(index); $("#PassportType").focus();
+                    });
+                    return false;
+                }
+                var passportNumber = $("#PassportNumber").val();
+                if ($.trim(passportNumber) === "") {
+                    layer.alert("护照号码不能为空.", function (index) {
+                        layer.close(index); $("#PassportNumber").focus();
+                    });
+                    return false;
+                }
+                var dateIssue = $("#DateIssue").val();
+                if ($.trim(dateIssue) === "") {
+                    layer.alert("护照签发日期不能为空.", function (index) {
+                        layer.close(index); $("#DateIssue").focus();
+                    });
+                    return false;
+                }
+                var placeIssue = $("#PlaceIssue").val();
+                if ($.trim(placeIssue) === "") {
+                    layer.alert("护照签发地点不能为空.", function (index) {
+                        layer.close(index); $("#PlaceIssue").focus();
+                    });
+                    return false;
+                }
+                var expiryDate = $("#ExpiryDate").val();
+                if ($.trim(expiryDate) === "") {
+                    layer.alert("护照失效日期不能为空.", function (index) {
+                        layer.close(index); $("#ExpiryDate").focus();
+                    });
+                    return false;
+                }
+                var rushService = $("#RushService").val();
+                if ($.trim(rushService) === "0") {
+                    layer.alert("请选择是否加急.", function (index) {
+                        layer.close(index); $("#RushService").focus();
+                    });
+                    return false;
+                }
+                //checkboxPurpose
+                var pur = "";
+                $("input[name='checkboxPurpose']:checked").each(function () {
+                    pur += $(this).val();
+                });
+                if ($.trim(pur) === "") {
+                    layer.alert("请至少选择一个事由.", function (index) {
+                        layer.close(index);
+                    });
+                    return false;
+                }
+                var entryNumber = $("#EntryNumber").val();
+                if ($.trim(entryNumber) === "") {
+                    layer.alert("请选择计划入境次数.", function (index) {
+                        layer.close(index); $("#EntryNumber").focus();
+                    });
+                    return false;
+                }
+                var dateEntry = $("#ProposedDateEntry").val();
+                if ($.trim(dateEntry) === "") {
+                    layer.alert("预计入境加纳的日期不能为空.", function (index) {
+                        layer.close(index); $("#ProposedDateEntry").focus();
+                    });
+                    return false;
+                }
+                var homeAddress = $("#HomeAddress").val();
+                if ($.trim(homeAddress) === "") {
+                    layer.alert("家庭地址不能为空.", function (index) {
+                        layer.close(index); $("#HomeAddress").focus();
+                    });
+                    return false;
+                }
+                var employerName = $("#EmployerName").val();
+                if ($.trim(employerName) === "") {
+                    layer.alert("工作单位或学校名称不能为空.", function (index) {
+                        layer.close(index); $("#EmployerName").focus();
+                    });
+                    return false;
+                }
+                var employerName = $("#EmployerName").val();
+                if ($.trim(employerName) === "") {
+                    layer.alert("工作单位或学校名称不能为空.", function (index) {
+                        layer.close(index); $("#EmployerName").focus();
+                    });
+                    return false;
+                }
+
+                var emergencyContact = $("#EmergencyContact").val();
+                if ($.trim(emergencyContact) === "") {
+                    layer.alert("紧急联系人不能为空.", function (index) {
+                        layer.close(index); $("#EmergencyContact").focus();
+                    });
+                    return false;
+                }
+                var emergencyPhone = $("#EmergencyPhone").val();
+                if ($.trim(emergencyPhone) === "") {
+                    layer.alert("紧急联系人电话不能为空.", function (index) {
+                        layer.close(index); $("#EmergencyPhone").focus();
+                    });
+                    return false;
+                }
+                var layerid = layer.msg('验证中...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+            }
+        });
+        $(function () {
+            if (!('placeholder' in document.createElement('input'))) {
+                $('input[placeholder],textarea[placeholder]').each(function () {
+                    var that = $(this), text = that.attr('placeholder');
+                    if (that.val() === "") {
+                        that.val(text).addClass('placeholder');
+                    }
+                    that.focus(function () {
+                        if (that.val() === text) {
+                            that.val("").removeClass('placeholder');
+                        }
+                    })
+                    .blur(function () {
+                        if (that.val() === "") {
+                            that.val(text).addClass('placeholder');
+                        }
+                    })
+                    .closest('form').submit(function () {
+                        if (that.val() === text) {
+                            that.val('');
+                        }
+                    });
+                });
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿@{
+    string controllerName = ViewContext.RouteData.Values["controller"].ToString();
+    string actionName = ViewContext.RouteData.Values["action"].ToString();
+    string regionName = ViewContext.RouteData.Values["region"].ToString().ToUpper();
+    Visa.Web.Models.SingleParameter single = Visa.Web.Models.SingleParameter.CreateInstance();
+    string countryName = single.GetRegionName(regionName);
+    object objmenu = Visa.Web.Models.CacheHelper.GetCache("menu");
+    List<KeyValuePair<string, string>> lsmenu = new List<KeyValuePair<string, string>>();
+    if (objmenu == null)
+    {
+        lsmenu = Visa.Service.TypeService.GetVisaList(regionName);
+        Visa.Web.Models.CacheHelper.SetCache("menu", lsmenu);
+    }
+    else
+    {
+        lsmenu = (List<KeyValuePair<string, string>>)objmenu;
+    }
+    List<string> lscon = new List<string>();
+    lscon.Add("Service");
+    lscon.Add("Holiday");
+    lscon.Add("Additional");
+    lscon.Add("Safety");
+    lscon.Add("Links");
+}
+<div class="up_top"> <a href="javascript:void(0);"><img src="/images/icons/btn_top.png"></a> </div>
+<header>
+    <div class="wrapper">
+        <h1 class="floatl logo">
+            <a href="http://www.globalvisacenter.org"><img src="/images/gvc-global-logo.png" alt="丝路全球签证中心"></a>
+        </h1>
+        <div class="floatr">
+            <div class="marb15 header2">
+                <h3 class="floatl c_white">@(countryName)签证申请</h3>
+                <div class="floatl flag"></div>
+                
+                <div class="clear"></div>
+            </div>
+            @*<ul class="language_list floatr">
+                    <li><a href="/index.html" >English</a></li>
+                    <li class="last_language">中文</li>
+                </ul>*@
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <div class="responsive_nav_parent"> </div>
+    </div>
+    <div class="clear"></div>
+
+</header>
+<nav>
+    <div class="wrapper">
+        <ul>
+            <li><a href="/@(regionName)/Home" class="pad_home @(controllerName == "Home" ? "home_active" : "")" title="首页">
+                <img src="/images/home.png" alt="首页">
+                </a>
+            <li id="li_visa_types">
+                <a href="javascript:;" class="visa @(controllerName == "Visa" ? "home_active" : "")">签证类别</a>
+                <div class="submenu" id="visa_types">
+                    <div class="floatl">
+                        <ul>
+                            @foreach (var item in lsmenu)
+                            {
+                                <li><a href="/@(regionName)/Visa/@item.Value.Replace(" ","-")">@item.Key</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            <li><a href="http://apply.globalvisacenter.org" class="@(controllerName == "XX" ? "home_active" : "")" target="_blank">在线预约</a></li>
+            <li><a href="/@(regionName)/Fee" class="@(controllerName == "Fee" ? "home_active" : "")">相关服务及收费标准</a></li>
+            <li><a href="###">查询申请进度</a></li>
+            <li>
+                <a href="javascript:;" class="@(lscon.Contains(controllerName) ? "home_active" : "")">一般信息 </a>
+                <div class="submenu" id="gen_info">
+                    <div class="floatl">
+                        <ul>
+                            <li><a href="/@(regionName)/Service">客户体验</a></li>
+                            <li><a href="/@(regionName)/Holiday">使领馆假期</a></li>
+                            <li><a href="/@(regionName)/Additional">附加服务</a></li>
+                            <li><a href="/@(regionName)/Safety">安全条例</a></li>
+                            <li><a href="/@(regionName)/Links">有用链接</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li><a href="/@(regionName)/Contact" class="@(controllerName == "Contact" ? "home_active" : "")">联系我们</a></li>
+            <li><a href="/@(regionName)/Faq" class="@(controllerName == "Faq" ? "home_active" : "")" title="常见问题解答">常见问题解答</a></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</nav>

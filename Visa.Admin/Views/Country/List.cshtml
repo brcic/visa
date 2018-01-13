@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Visa.Domain.vDistrict>
+<!-- #section:basics/content.breadcrumbs -->
+<script type="text/javascript">
+    function checkdel(id) {
+        if (confirm("确实要删除吗？")) {
+            $.post("/Course/Delete", { id: id }, function (data) {
+                alert(data.message);
+                if (data.status == "1")
+                    window.location.reload();
+            }, "json");
+        }
+    }
+    function checkfind() {
+        var url = "/Country/List?s=pf&sid=@ViewData["vsid"]";
+        var chinese = $("#textChinese").val();
+        if (chinese != "")
+            url += "&chinese=" + encodeURIComponent(chinese);
+        var eng = $("#textEnglish").val();
+        if (eng != "")
+            url += "&eng=" + eng;
+     
+        window.location.href = url;
+    }
+</script>
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="###">国家地区</a>
+        </li>
+        <li>
+            地区列表
+        </li>
+    </ul><!-- /.breadcrumb -->
+</div>
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    @Html.Partial("_PartialSetting")
+
+   
+    <div class="row">
+
+        <div class="col-xs-12">
+            <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="active right">中文名:</td>
+                        <td>
+                            <input type="text" id="textChinese" class="input-sm" value="@ViewData["vchi"]" />
+
+                        </td>
+                        <td class="active right">英文名: </td>
+                        <td>
+                            <input type="text" id="textEnglish" class="input-sm" value="@ViewData["veng"]" />
+                        </td>
+                        <td >
+                        <button type="button" class="btn btn-sm btn-pink" onclick="checkfind()" aria-label="Left Align">
+                            <i class="fa fa-search bigger-125"></i>查询
+                        </button> </td>
+                      
+                    </tr>
+
+                    
+                </tbody>
+            </table>
+            <table id="simple-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>英文名</th>
+                        <th>中文名</th>
+                        <th>国家代码</th>
+                        <th>是否显示</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="tr_@item.Id">
+                            <td>@item.Id</td>
+                            <td>@item.CountryName</td>
+                            <td>@item.ChineseName</td>
+                            <td>@item.CountryCode</td>
+                            @if (item.IsShow == 1)
+                            {
+                                <td>显示</td>
+                            }
+                            else
+                            {
+                                <td>隐藏</td>
+                            }
+                            <td>
+                                <div class="hidden-sm hidden-xs btn-group">
+
+                                    <a href="/Country/Edit/@item.Id" class="btn btn-xs btn-info">
+                                        <i class="ace-icon fa fa-pencil bigger-120"></i>编辑
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

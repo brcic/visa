@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+.logincot {
+	padding: 50px 0 0;
+	border: 1px #9A8F8F solid;
+	background-color: #faf9f9;
+}
+.loginrow {
+	margin-bottom: 20px;
+}
+.loginimg {
+	height: 38px;
+}
+.loginfoot {
+	text-align: center;
+	padding: 10px 0;
+	color: #fff;
+	background: #009688;
+}
+.projecttitle {
+	font-size: 24px;
+	color: #009688;
+	margin-bottom: 15px;
+}
+.mandatory {
+	color: #f00;
+}
+.field-validation-error {
+	color: #f00;
+}
+.layui-allow {
+	background-color: #00d4c0!important;
+	color: #fff!important;
+}
+.layui-ban {
+	background-color: #f57069!important;
+	color: #fff!important;
+}
+.btntip {
+	text-decoration: underline;
+	color: #009688;
+}
+.note {
+	margin-bottom: 15px;
+}
+#err-msg, #form-empty-err-msg {
+	border: 1px solid red;
+	padding: 5px;
+	color: red;
+	display: naone;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.changeword {
+	font-size: 20px;
+	color: #333;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.addperson {
+	text-align:right;
+}
+
+/*******************help************************/
+.helpul {
+	margin-bottom: 15px;
+}
+.helpul li {
+	list-style-type: lower-latin;
+	list-style-position: inside;
+	line-height: 24px;
+}
+
+    

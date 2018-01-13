@@ -1,0 +1,14 @@
+﻿
+@charset "utf-8";
+/* CSS Document */
+
+.background_image {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: -1;
+	overflow: hidden;
+}
+.background_image img {
+	position: relative;
+}

@@ -1,0 +1,207 @@
+﻿@model IEnumerable<Visa.Domain.AppointView>
+<script src="~/layer/layer.js"></script>
+<script type="text/javascript">
+   
+    function checkpay(id) {
+
+        layer.confirm('确实要结款吗？', function () {
+            var layerid = layer.msg('验证中...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+            $.ajax({
+                type: 'POST',
+                url: '/Apply/checkPay',
+                data: { id: id },
+                dataType: 'json',
+                success: function (data) {
+                    layer.closeAll();
+                    if (data.status == "1")
+                        window.location.reload();
+                    else
+                        layer.msg("账号超时！", { time: 3000 });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    layer.closeAll();
+                    if (XMLHttpRequest.status == "499")
+                        layer.msg("你没有权限,请联系管理员！", { time: 3000 });
+                    else
+                        layer.msg("保存失败！" + textStatus, { time: 3000 });
+                }
+            });
+        });
+    }
+    function checkfind() {
+        var url = "/Apply/Receipt?s=pf";
+        var country = $("#SelectCountry").val();
+        if (country != "")
+            url += "&country=" + country;
+
+        var number = $("#textNumer").val();
+        if (number != "")
+            url += "&number=" + number;
+
+        var phone = $("#textPhone").val();
+        if (phone != "")
+            url += "&phone=" + phone;
+        var mail = $("#textEmail").val();
+        if (mail != "")
+            url += "&mail=" + encodeURI(mail);
+
+        var stime = $("#textStime").val();
+        if (stime != "")
+            url += "&stime=" + encodeURI(stime);
+        window.location.href = url;
+    }
+    $(function () {
+        $(document).keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') { checkfind(); }
+        });
+    });
+</script>
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="###">预约管理</a>
+        </li>
+        <li>
+            需要支付的预约记录
+        </li>
+    </ul><!-- /.breadcrumb -->
+</div>
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    @Html.Partial("_PartialSetting")
+    <div class="row">
+        <div class="col-xs-12">
+            <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="active right">
+                            目的国家
+                        </td>
+                        <td>
+                            @Html.DropDownList("SelectCountry", ViewData["vcountry"] as List<SelectListItem>)
+                        </td>
+                        <td class="active right">
+                            预约序号
+                        </td>
+                        <td>
+                            <input type="text" id="textNumer" class="input-sm" value="@ViewData["vnumber"]" />
+                        </td>
+                        <td class="active right">
+                            预约人手机
+                        </td>
+                        <td>
+                            <input type="text" id="textPhone" class="input-sm" value="@ViewData["vphone"]" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="active right">
+                            预约人邮箱
+                        </td>
+                        <td>
+                            <input type="text" id="textEmail" class="input-sm" value="@ViewData["vmail"]" />
+                        </td>
+                        <td class="active right">
+                            预约日期
+                        </td>
+                        <td colspan="2">
+                            <input type="text" id="textStime" class="input-sm" value="@ViewData["vstime"]" />
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-pink" href="javascript:checkfind()" aria-label="Left Align">
+                                <i class="fa fa-search bigger-120"></i>查询
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color:#ff0000">付款确认收才可打印收据</p>
+            <table id="simple-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>预约序号</th>
+                        <th>签证国家</th>
+                        <th>签证类型</th>
+                        <th>当前国籍</th>
+                        <th>创建时间</th>
+                        <th>预约时间</th>
+                        <th>预约操作人</th>
+                        <th>费用信息</th>
+                        <th>应收款</th>
+                        <th>付款信息</th>
+                        <th>经手人</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="tr_@item.Id">
+                            <td>@item.ApplyNumber</td>
+                            <td>@item.ChineseName</td>
+                            <td>@item.QzType</td>
+                            <td>@item.Residence</td>
+                            <td>@item.AddTime</td>
+                            <td>@item.DateName @item.TimeRange</td>
+                            <td>@item.Surname @item.Givename</td>
+                            <td>
+                               代收签证费:@item.totalVisaFee <br>
+                               签证服务费:@item.totalServiceFee <br>
+                               其他服务费:@item.totalSupportFee
+                            </td>
+                            <td>CNY @(item.totalVisaFee + @item.totalServiceFee + item.totalSupportFee + item.totalVIPFee)</td>
+                            <td>
+                                付款状态:
+                                @if (item.PayStatus == 0) 
+                                {
+                                    <span style="color:#ff0000">未付款</span>
+                                }
+                                else
+                                {
+                                    <span>已付款</span>
+                                }
+                                <br>
+                                付款日期:
+                                @if (item.Paydate != null)
+                                {
+                                    <span>@item.Paydate</span>
+                                }
+                                else
+                                {
+                                    <span>N/A</span>
+                                }
+                            </td>
+                            
+                            <td>@item.Payee</td>
+                            <td>
+                                <div class="hidden-sm hidden-xs btn-group">
+                                    @if (item.PayStatus == 1)
+                                    {
+                                        <a href="/Apply/Print?number=@item.ApplyNumber" class="btn btn-xs btn-info" target="_blank">
+                                            <i class="ace-icon fa fa-print bigger-120"></i>打印收据
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-xs btn-info" href="javascript:checkpay(@item.Id)">
+                                            <i class="ace-icon fa fa-gratipay bigger-120"></i>确认收款
+                                        </a>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @Html.Raw(ViewData["PageHtml"])
+        </div>
+    </div>
+</div>

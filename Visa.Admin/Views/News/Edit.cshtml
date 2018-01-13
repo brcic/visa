@@ -1,0 +1,97 @@
+﻿@model Visa.Domain.vArticle
+<!-- 样式文件 -->
+<link rel="stylesheet" href="/umeditor/themes/default/css/umeditor.css">
+<!-- 配置文件 -->
+<script type="text/javascript" src="/umeditor/umeditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/umeditor/umeditor.min.js"></script>
+<!-- 语言包文件 -->
+<script type="text/javascript" src="/umeditor/lang/zh-cn/zh-cn.js"></script>
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+		try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="/News/List">一般资讯</a>
+        </li>
+        <li>
+            资讯编辑
+        </li>
+    </ul><!-- /.breadcrumb -->
+
+</div>
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    @Html.Partial("_PartialSetting")
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { @id = "frmAdd", @name = "frmAdd", @role = "form", @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                 <!-- #section:elements.form -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="ArticleTitle">文章标题</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.ArticleTitle, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="PageTitle">PageTitle</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.PageTitle, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="KeyWords">KeyWords</label>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.KeyWords, new { @cols = "80",@rows=6 })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="PageDescription">PageDescription</label>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.PageDescription, new { @cols = "80", @rows = 6 })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="ArticleContent">内容</label>
+                    <div class="col-sm-10">
+                        <script id="ArticleContent" name="ArticleContent" type="text/plain" style="width:800px;height:360px;">
+                            @Html.Raw(Model.ArticleContent)
+                        </script>
+                    </div>
+                </div>
+                
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-2 col-md-9">
+                        <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-120"></i>
+                            保存
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <a class="btn" href="javascript:history.go(-1)">
+                            <i class="fa fa-arrow-left bigger-120"></i>
+                            返回
+                        </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- 实例化编辑器代码 -->
+<script type="text/javascript">
+    $(function () {
+        var serverPath = '';
+        UM.getEditor('ArticleContent', { imageUrl: "/vFile/mUpload", imagePath: serverPath, autoHeightEnabled: false });
+      
+    });
+</script>

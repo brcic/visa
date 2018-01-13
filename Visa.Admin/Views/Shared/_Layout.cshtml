@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>丝路全球签证中心管理系统</title>
+    <meta name="description" content="SICAS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+
+    <!-- page specific plugin styles -->
+    <!-- text fonts -->
+    <link rel="stylesheet" href="/assets/css/ace-fonts.min.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+    <![endif]-->
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+    <script src="/assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+    <script src="/assets/js/html5shiv.min.js"></script>
+    <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/assets/js/jquery.min.js'>" + "<" + "/script>");
+    </script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='/assets/js/jquery1x.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.validate.min.js"></script>
+</head>
+
+<body class="no-skin">
+    <!-- #section:basics/navbar.layout -->
+    <div id="navbar" class="navbar navbar-default">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+        @{
+            string controllerName = ViewContext.RouteData.Values["controller"].ToString();
+            string actionName = ViewContext.RouteData.Values["action"].ToString();
+           
+        }
+        <div class="navbar-container" id="navbar-container">
+            <!-- #section:basics/sidebar.mobile.toggle -->
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- /section:basics/sidebar.mobile.toggle -->
+            <div class="navbar-header pull-left">
+                <!-- #section:basics/navbar.layout.brand -->
+                <div class="navbar-brand">
+                    <small> <i class="fa fa-leaf"></i>
+                        丝路全球签证中心管理系统
+                    </small>
+                </div>
+
+                <!-- /section:basics/navbar.layout.brand -->
+                <!-- #section:basics/navbar.toggle -->
+                <!-- /section:basics/navbar.toggle -->
+            </div>
+          
+            <!-- #section:basics/navbar.dropdown -->
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <!-- #section:basics/navbar.user_menu -->
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="~/assets/avatars/avatar5.png" alt="admin" />
+                            <span class="user-info">
+                                <small>Welcome</small>
+                                admin
+                            </span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                          
+                            <li>
+                                <a href="/Account/ChangePwd">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    修改密码
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="/Account/Logout">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- /section:basics/navbar.user_menu -->
+                </ul>
+            </div>
+
+            <!-- /section:basics/navbar.dropdown -->
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <!-- #section:basics/sidebar -->
+        <div id="sidebar" class="sidebar                  responsive">
+            <script type="text/javascript">
+                try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+            </script>
+
+           
+
+            <ul class="nav nav-list">
+                <li class="@(controllerName == "Country" ? "active open" : "")">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-globe"></i>
+                        <span class="menu-text">国家管理</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="@(controllerName == "Country" && (actionName == "List"||actionName=="Edit") ? "active" : "")">
+                            <a href="/Country/List">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                区域信息
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="@(controllerName == "Visa" ? "active open" : "")">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-cc-visa"></i>
+                            <span class="menu-text">签证管理</span>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+                        <ul class="submenu">
+                            <li class="@(controllerName == "Visa" && actionName == "List" ? "active" : "")">
+                                <a href="/Visa/List">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    签证种类
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+
+                <li class="@(controllerName == "News" ? "active open" : "")">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-newspaper-o"></i>
+                        <span class="menu-text">新闻动态</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="@(controllerName == "News" && actionName == "List" ? "active" : "")">
+                            <a href="/News/List">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                一般资讯
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li>
+                <li class="@(controllerName == "Apply" ? "active open" : "")">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-signal"></i>
+                        <span class="menu-text">预约申请管理</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="@(controllerName == "Apply" && (actionName == "List" || actionName == "Applicant") ? "active" : "")">
+                            <a href="/Apply/List">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                预约记录
+                            </a>
+                        </li>
+                        <li class="@(controllerName == "Apply" && actionName == "Receipt" ? "active" : "")">
+                            <a href="/Apply/Receipt">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                服务收费
+                            </a>
+                        </li>
+                        <li class="@(controllerName == "Apply" && actionName == "Track" ? "active" : "")">
+                            <a href="/Apply/Track">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                申请跟踪
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="@(controllerName == "Adviser" ? "active open" : "")">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-user"></i>
+                        <span class="menu-text">员工管理</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="@(controllerName == "Adviser" && actionName == "List" ? "active" : "")">
+                            <a href="/Adviser/List">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                员工信息
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul><!-- /.nav-list -->
+            <!-- #section:basics/sidebar.layout.minimize -->
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+
+            <!-- /section:basics/sidebar.layout.minimize -->
+            <script type="text/javascript">
+                try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+            </script>
+        </div>
+
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                @RenderBody()
+            </div>
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+                <!-- #section:basics/footer -->
+                <div class="footer-content">
+                    <span class="bigger-120">
+                        <span class="blue bolder">丝路全球签证中心管理系统</span>
+                        BRCIC &copy; 2017-2020
+                    </span>
+
+                    &nbsp; &nbsp;
+                    <span class="action-buttons">
+                        <a href="#">
+                            <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                        </a>
+                    </span>
+                </div>
+
+                <!-- /section:basics/footer -->
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+    <script src="/assets/js/excanvas.min.js"></script>
+    <![endif]-->
+    <!-- ace scripts -->
+
+
+    <script src="/assets/js/ace/ace.js"></script>
+    <script src="/assets/js/ace/ace.sidebar.js"></script>
+    <script src="/assets/js/ace/ace.submenu-hover.js"></script>
+    <script src="/assets/js/ace/ace.settings.js"></script>
+    <script src="/assets/js/ace/ace.settings-rtl.js"></script>
+</body>
+</html>

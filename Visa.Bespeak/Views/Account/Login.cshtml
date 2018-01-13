@@ -1,0 +1,166 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" media="all">
+    <link rel="stylesheet" href="/css/laycustom.css" media="all">
+    <script src="~/js/jquery-1.10.2.js"></script>
+    <script src="~/layer/layer.js"></script>
+    <script>
+        function checklogin() {
+            var email = $("#textEmail").val();
+            if ($.trim(email) === "") {
+                layer.alert("请输入邮箱.", function (index) { layer.close(index); $("#textEmail").focus().addClass("layui-form-danger"); });
+                return false;
+            }
+            else {
+                $("#textEmail").removeClass("layui-form-danger");
+            }
+            var pwd = $("#textPwd").val();
+            if ($.trim(pwd) === "") {
+                layer.alert("请输入密码.", function (index) { layer.close(index); $("#textPwd").focus().addClass("layui-form-danger"); });
+                return false;
+            }
+            else {
+                $("#textPwd").removeClass("layui-form-danger");
+            }
+            var verifycode = $("#textVerification").val();
+            if ($.trim(verifycode) == "") {
+                layer.alert("验证码不能为空!", function (index) { layer.close(index); $("#textVerification").focus(); });
+                return false;
+            }
+            var layerid = layer.msg('验证中...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+            $.ajax({
+                type: 'POST',
+                url: '/Account/Login',
+                data: { email: email, pwd: pwd, verifycode: verifycode },
+                dataType: 'json',
+                success: function (data) {
+                    layer.close(layerid)
+                    if (data.status == "1") {
+                        layer.msg('跳转中...', { icon: 16, time: 3000, shade: [0.6, '#000', true] });
+                        window.location.href = "/Order/Place";
+                    }
+                    else
+                        layer.msg(data.message, { time: 2000 });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    layer.close(layerid)
+                }
+            });
+            return true;
+        }
+        function changever() {
+            $("#imgverify").attr("src", "/Account/ImgValidCode?r=" + Math.random());
+        }
+
+    </script>
+    <script type="text/javascript">
+        //防止页面后退
+        window.history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
+
+</head>
+<body>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">签证预约</div>
+        </div>
+    </div>
+    <div class="layui-container logincot">
+
+        <div class="layui-row loginrow">
+            <div class="layui-col-xs8 layui-col-xs-offset3">
+                <h1 style="font-size: 24px;">预约登陆</h1>
+            </div>
+        </div>
+
+        <div class="layui-row loginrow">
+            <div class="layui-col-xs8 layui-col-xs-offset3">
+                <h2 style="font-size: 21px;">如您第一次使用此服务，请点击新用户</h2>
+            </div>
+        </div>
+        <div class="layui-row loginrow">
+            <div class="layui-col-xs8 layui-col-xs-offset3" style="color:#ff0000">
+                @ViewData["atip"]
+            </div>
+        </div>
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <div>电子邮箱<span class="mandatory">*</span></div>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="text" id="textEmail" lay-verify="required" placeholder="电子邮箱" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <div>密码<span class="mandatory">*</span></div>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="password" id="textPwd" lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <a href="javascript:changever()"><img id="imgverify" class="loginimg" src="/Account/ImgValidCode" /></a>
+            </div>
+            <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-form">
+                    <input type="text" id="textVerification" lay-verify="required" placeholder="请输入图形所示识别码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset6">
+                <a href="javascript:checklogin()" class="layui-btn layui-btn-big">登录</a>
+            </div>
+
+        </div>
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md2 layui-col-md-offset3">
+                <a href="###">忘记密码？</a>
+            </div>
+            <div class="layui-col-md3">
+                <a href="/Account/Register">新用户？</a>
+            </div>
+        </div>
+        <div class="layui-row layui-col-space1 loginrow">
+            <div class="layui-col-md4 layui-col-md-offset4">
+                <p>免责声明：注册信息将在从今天起的30天后失效</p>
+            </div>
+
+        </div>
+        <div class="layui-footer footer footer-demo loginfoot">
+            <div class="layui-main">
+                <p>Copyright 2017. BRCIC Global Visa Center. All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C73D6DC-54FB-4465-BFC0-EF93F330E73B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Visa.Web</RootNamespace>
+    <AssemblyName>Visa.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\dd.css" />
+    <Content Include="css\ie8.css" />
+    <Content Include="css\indexstyle.css" />
+    <Content Include="css\jquery-ui.css" />
+    <Content Include="css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="css\media-queries-index.css" />
+    <Content Include="css\media-queries.css" />
+    <Content Include="css\onlinestyle.css" />
+    <Content Include="css\Site.css" />
+    <Content Include="css\skin.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\uniform.default.css" />
+    <Content Include="css\website.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Generate.jpg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\banners\home-page-1.jpg" />
+    <Content Include="images\banners\home-page-2.jpg" />
+    <Content Include="images\banners\home-page-3.jpg" />
+    <Content Include="images\box-banner\courier-services.jpg" />
+    <Content Include="images\box-banner\photobooth-facility.jpg" />
+    <Content Include="images\box-banner\photocopy-services.jpg" />
+    <Content Include="images\box-banner\premium-lounge.jpg" />
+    <Content Include="images\gvc-global-logo.png" />
+    <Content Include="images\home.png" />
+    <Content Include="images\home_white.png" />
+    <Content Include="images\icons\arrow_blue.gif" />
+    <Content Include="images\icons\arrow_grey.gif" />
+    <Content Include="images\icons\black-opacity-50.png" />
+    <Content Include="images\icons\black-opacity-60.png" />
+    <Content Include="images\icons\btn_top.png" />
+    <Content Include="images\icons\calender.gif" />
+    <Content Include="images\icons\calender.png" />
+    <Content Include="images\icons\chaticon.png" />
+    <Content Include="images\icons\kenya.png" />
+    <Content Include="images\icons\laptop.gif" />
+    <Content Include="images\icons\laptop.png" />
+    <Content Include="images\icons\locate_icon.png" />
+    <Content Include="images\icons\mail_big.gif" />
+    <Content Include="images\icons\mail_big.png" />
+    <Content Include="images\icons\phone_big.png" />
+    <Content Include="images\icons\search_icon.png" />
+    <Content Include="images\ISO-logo.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\map\africa.jpg" />
+    <Content Include="images\map\all.jpg" />
+    <Content Include="images\map\america.jpg" />
+    <Content Include="images\map\asia-pacific.jpg" />
+    <Content Include="images\map\europe.jpg" />
+    <Content Include="images\sprite.png" />
+    <Content Include="images\steps\step_01.png" />
+    <Content Include="images\steps\step_02.png" />
+    <Content Include="images\steps\step_03.png" />
+    <Content Include="images\vfs-global-logo.png" />
+    <Content Include="img\86975.gif" />
+    <Content Include="img\africa.jpg" />
+    <Content Include="img\Albania.jpg" />
+    <Content Include="img\algeria.jpg" />
+    <Content Include="img\all.jpg" />
+    <Content Include="img\america.jpg" />
+    <Content Include="img\argentina.jpg" />
+    <Content Include="img\armenia.jpg" />
+    <Content Include="img\asia-pacific.jpg" />
+    <Content Include="img\Australia.jpg" />
+    <Content Include="img\azerbaijan.jpg" />
+    <Content Include="img\bangladesh.jpg" />
+    <Content Include="img\banners\home-page-1.jpg" />
+    <Content Include="img\banners\home-page-2.jpg" />
+    <Content Include="img\banners\home-page-3.jpg" />
+    <Content Include="img\Benin.jpg" />
+    <Content Include="img\bolivia.jpg" />
+    <Content Include="img\Brazil.jpg" />
+    <Content Include="img\btn_top.png" />
+    <Content Include="img\bulgaria.jpg" />
+    <Content Include="img\burkina-faso.jpg" />
+    <Content Include="img\cambodia.jpg" />
+    <Content Include="img\cameroon.jpg" />
+    <Content Include="img\canada-bg.jpg" />
+    <Content Include="img\canada-flag.png" />
+    <Content Include="img\Canada.png" />
+    <Content Include="img\canada_flag.png" />
+    <Content Include="img\chaticon.png" />
+    <Content Include="img\china.jpg" />
+    <Content Include="img\Colombia.jpg" />
+    <Content Include="img\costa-rica.jpg" />
+    <Content Include="img\cote-divoire.jpg" />
+    <Content Include="img\Democratic-Republic-of-the-Congo.jpg" />
+    <Content Include="img\Djibouti.jpg" />
+    <Content Include="img\Ecuador.jpg" />
+    <Content Include="img\egypt.jpg" />
+    <Content Include="img\El-salvador.jpg" />
+    <Content Include="img\ethiopia.jpg" />
+    <Content Include="img\europe.jpg" />
+    <Content Include="img\fiji.jpg" />
+    <Content Include="img\france.jpg" />
+    <Content Include="img\Gambia.jpg" />
+    <Content Include="img\georgia.jpg" />
+    <Content Include="img\Germany.jpg" />
+    <Content Include="img\ghana.jpg" />
+    <Content Include="img\guatemala.jpg" />
+    <Content Include="img\guinea.jpg" />
+    <Content Include="img\home.png" />
+    <Content Include="img\home_white.png" />
+    <Content Include="img\honduras.jpg" />
+    <Content Include="img\hong-kong.jpg" />
+    <Content Include="img\icons\arrow_blue.gif" />
+    <Content Include="img\icons\arrow_grey.gif" />
+    <Content Include="img\icons\black-opacity-50.png" />
+    <Content Include="img\icons\black-opacity-60.png" />
+    <Content Include="img\icons\btn_top.png" />
+    <Content Include="img\icons\chaticon.png" />
+    <Content Include="img\icons\mail_big.gif" />
+    <Content Include="img\icons\phone_big.png" />
+    <Content Include="img\icons\search_icon.png" />
+    <Content Include="img\india.jpg" />
+    <Content Include="img\indonesia.jpg" />
+    <Content Include="img\iraq.jpg" />
+    <Content Include="img\ISO-logo.png" />
+    <Content Include="img\italy.jpg" />
+    <Content Include="img\japan.jpg" />
+    <Content Include="img\jordan.jpg" />
+    <Content Include="img\kazakhstan.jpg" />
+    <Content Include="img\kenya.jpg" />
+    <Content Include="img\kosovo.jpg" />
+    <Content Include="img\kuwait.jpg" />
+    <Content Include="img\kyrgyzstan.jpg" />
+    <Content Include="img\lebanon.jpg" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\macedonia.jpg" />
+    <Content Include="img\mail_big.gif" />
+    <Content Include="img\malaysia.jpg" />
+    <Content Include="img\mali.jpg" />
+    <Content Include="img\mauritius.jpg" />
+    <Content Include="img\mexico.jpg" />
+    <Content Include="img\moldova.jpg" />
+    <Content Include="img\mongolia.jpg" />
+    <Content Include="img\montenegro.jpg" />
+    <Content Include="img\morocco.jpg" />
+    <Content Include="img\nepal.jpg" />
+    <Content Include="img\new-zealand.jpg" />
+    <Content Include="img\niger.jpg" />
+    <Content Include="img\nigeria.jpg" />
+    <Content Include="img\oman.jpg" />
+    <Content Include="img\pakistan.jpg" />
+    <Content Include="img\panama.jpg" />
+    <Content Include="img\paraguay.jpg" />
+    <Content Include="img\peru.jpg" />
+    <Content Include="img\philippines.jpg" />
+    <Content Include="img\phone_big.png" />
+    <Content Include="img\poland.jpg" />
+    <Content Include="img\qatar.jpg" />
+    <Content Include="img\qingdao-bg.jpg" />
+    <Content Include="img\refresh.png" />
+    <Content Include="img\romania.jpg" />
+    <Content Include="img\russia.jpg" />
+    <Content Include="img\saudi-arabia.jpg" />
+    <Content Include="img\senegal.jpg" />
+    <Content Include="img\serbia.jpg" />
+    <Content Include="img\singapore.jpg" />
+    <Content Include="img\Somalia.jpg" />
+    <Content Include="img\south-africa.jpg" />
+    <Content Include="img\south-korea.jpg" />
+    <Content Include="img\spain.jpg" />
+    <Content Include="img\sri-lanka.jpg" />
+    <Content Include="img\step_01.png" />
+    <Content Include="img\step_02.png" />
+    <Content Include="img\step_03.png" />
+    <Content Include="img\taiwan.jpg" />
+    <Content Include="img\tajikistan.jpg" />
+    <Content Include="img\tanzania.jpg" />
+    <Content Include="img\thailand.jpg" />
+    <Content Include="img\tunisia.jpg" />
+    <Content Include="img\turkey.jpg" />
+    <Content Include="img\uae.jpg" />
+    <Content Include="img\uganda.jpg" />
+    <Content Include="img\ukraine.jpg" />
+    <Content Include="img\united-kingdom.jpg" />
+    <Content Include="img\uruguay.jpg" />
+    <Content Include="img\venezuela.jpg" />
+    <Content Include="img\vfs-global-logo.png" />
+    <Content Include="img\vfs-logo2.png" />
+    <Content Include="img\vietnam.jpg" />
+    <Content Include="img\zimbabwe.jpg" />
+    <Content Include="js\analytics.js" />
+    <Content Include="js\common.js" />
+    <Content Include="js\common1.js" />
+    <Content Include="js\custom-isotope.js" />
+    <Content Include="js\html5.js" />
+    <Content Include="js\image.js" />
+    <Content Include="js\jquery-1.10.2.js" />
+    <Content Include="js\jquery-1.8.2.min.js" />
+    <Content Include="js\jquery-1.9.0.min.js" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery.dd.js" />
+    <Content Include="js\jquery.jcarousel.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.style.js" />
+    <Content Include="js\jquery.tinyscrollbar.min.js" />
+    <Content Include="js\jquery.uniform.min.js" />
+    <Content Include="js\jqueryui.js" />
+    <Content Include="js\jqueryval.js" />
+    <Content Include="js\TweenMax.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdditionalController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\FaqController.cs" />
+    <Compile Include="Controllers\FeeController.cs" />
+    <Compile Include="Controllers\HolidayController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LinksController.cs" />
+    <Compile Include="Controllers\SafetyController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\StepController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\VisaController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheHelper.cs" />
+    <Compile Include="Models\SingleParameter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="css\fonts\sourcesanspro-regular-webfont.ttf" />
+    <Content Include="css\fonts\sourcesanspro-semibold-webfont.ttf" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="js\jquery.cycle.all.js" />
+    <Content Include="css\fonts\sourcesanspro-bold-webfont.woff" />
+    <Content Include="css\fonts\sourcesanspro-extralight-webfont.woff" />
+    <Content Include="css\fonts\sourcesanspro-regular-webfont.woff" />
+    <Content Include="css\fonts\sourcesanspro-semibold-webfont.woff" />
+    <Content Include="Views\Visa\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialHeader.cshtml" />
+    <Content Include="Views\Shared\_PartialCss.cshtml" />
+    <Content Include="Views\Shared\_PartialFooter.cshtml" />
+    <Content Include="Views\Step\Know_Your_Visa_Type.cshtml" />
+    <Content Include="Views\Step\How_To_Apply.cshtml" />
+    <Content Include="Views\Step\After_Submission.cshtml" />
+    <Content Include="Views\Visa\Types.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Holiday\Index.cshtml" />
+    <Content Include="Views\Safety\Index.cshtml" />
+    <Content Include="Views\Links\Index.cshtml" />
+    <Content Include="Views\Faq\Index.cshtml" />
+    <Content Include="Views\Fee\Index.cshtml" />
+    <Content Include="Views\Additional\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Visa.pubxml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Article\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Visa.Domain\Visa.Domain.csproj">
+      <Project>{51b54931-b75e-4fe0-91e6-54571b112e42}</Project>
+      <Name>Visa.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Visa.Service\Visa.Service.csproj">
+      <Project>{39d0513a-8f3b-45c6-87bb-c91700ea01af}</Project>
+      <Name>Visa.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3619</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3619/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

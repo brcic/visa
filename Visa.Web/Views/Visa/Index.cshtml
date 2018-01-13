@@ -1,0 +1,157 @@
+﻿@model Visa.Domain.VisaType
+@{
+    Layout = null;
+}
+
+@{
+    string regionName = ViewContext.RouteData.Values["region"].ToString();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+   
+    <title>签证信息 - 中国青岛- @Model.TypeName</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=8; IE=9; IE=10; IE=EDGE" />
+    <meta name="description" content="签证信息">
+    <meta name="keywords" content="签证信息">
+    <meta name="viewport" id="myViewport" content="width=device-width, initial-scale=1.0" />
+
+    @Html.Partial("_PartialCss")
+
+</head>
+<body>
+    <div class="container">
+        @Html.Partial("_PartialHeader")
+        <section class="banner">
+            <div class="wrapper">
+                <div class="breadcrumb padt20">
+                    <ul class="clearfix">
+                        <li><a href="/@regionName/Home"> 首页</a></li>
+                        <li>&gt;</li>
+                        <li><a href="visa_types.html">申请签证</a></li>
+                        <li>&gt;</li>
+                        <li><a >商务</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="center text_center padt25">
+                    <h1 class="caps c_blue light fbold">@Model.TypeName</h1>
+                </div>
+            </div>
+        </section>
+        <div class="wrapper">
+            <section class="steps">
+                <ul class="step_icons">
+                    <li class="step01 ico marr94"><a href="/@regionName/Step/Know_Your_Visa_Type" name="stepOne" class="ico_active" title="Know Your Visa Type"></a></li>
+                    <li class="step02 ico marr94"><a href="/@regionName/Step/How_To_Apply" name="stepTwo" title="How To Apply"></a></li>
+                    <li class="step03 ico"><a href="/@regionName/Step/After_Submission" name="stepThree" title="After Submission"></a></li>
+                </ul>
+            </section>
+            <!--Responsive-->
+            <div class="home_step_responsive_parent">
+                <div class="home_step_responsive">
+                    <div class="step01 ico"><a href="/@regionName/Step/Know_Your_Visa_Type" name="stepOne" class="ico_active" title="Know Your Visa Type"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step02 ico"><a href="/@regionName/Step/How_To_Apply" name="stepTwo" title="How To Apply"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step03 ico"><a href="/@regionName/Step/After_Submission" name="stepThree" title="After Submission"></a></div>
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <div class="wrapper">
+                <h4 class="tourist_title_main marb15 mart20 caps"> 商务 </h4>
+            </div>
+            <div class="content_nav">
+                <div class="wrapper">
+                    <ul class="nav_visatypes">
+                        <li><a href="#" name="tourist_overview">概述</a></li>
+                        <li><a href="#" name="tourist_visaFees">签证费</a></li>
+                        <li><a href="#" name="tourist_documents">所需资料</a></li>
+                        <li><a href="#" name="tourist_photoSpecs">照片规格</a></li>
+                        <li><a href="#" name="tourist_processing">审理时间</a></li>
+                        <li><a href="#" name="tourist_download">表格下载</a></li>
+                    </ul>
+                    <div class="nav_visatypes_select">
+                        <select >
+                            <option value="tourist_overview">Overview</option>
+                            <option value="tourist_visaFees">Visa Fees</option>
+                            <option value="tourist_documents">Documents Required</option>
+                            <option value="tourist_photoSpecs">Photo Specifications</option>
+                            <option value="tourist_processing">Processing Time</option>
+                            <option value="tourist_download">Download Form</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="tourist_content" id="tourist_overview">
+                    <h4 class="tourist_title_main marb15 caps">概述</h4>
+                    <div class="tourist_text">
+                       @Html.Raw(Model.Overview)
+                    </div>
+                </div>
+                <div class="tourist_content" id="tourist_visaFees">
+                    <h4 class="tourist_title_main marb15 caps">签证费</h4>
+                    <div class="tourist_text">
+                        @Html.Raw(Model.VisaFee)
+                    </div>
+                </div>
+                <div class="tourist_content" id="tourist_documents">
+                    <h4 class="tourist_title_main marb15 caps">所需资料</h4>
+                    <div class="tourist_text">
+                        @Html.Raw(Model.DocumentRequired)
+                    </div>
+                </div>
+                <div class="tourist_content" id="tourist_photoSpecs">
+                    <h4 class="tourist_title_main marb15 caps">照片规格</h4>
+                    <div class="tourist_text">
+                        @Html.Raw(Model.PhotoSpecification)
+                    </div>
+                </div>
+                <div class="tourist_content" id="tourist_processing">
+                    <h4 class="tourist_title_main marb15 caps">审理时间</h4>
+                    <div class="tourist_text">
+                        @Html.Raw(Model.ProcessingTime)
+                    </div>
+                </div>
+                <div class="tourist_content" id="tourist_download">
+                    <h4 class="tourist_title_main marb15 caps">表格下载</h4>
+                    <div class="tourist_text">
+                        <p>申请商务签证，您可以从这里下载相关表格， </p>
+                        <div class="tourist_text">
+                            <table class="tourist_text">
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/images/pdf_icon.gif"></td>
+                                        <td><a href="pdf/Schengen-visa-application-form.pdf" class="c_orange" target="_blank"><span style="padding-left:10px;"> 短期申请表 </span></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/pdf_icon.gif"></td>
+                                        <td><a href="pdf/Business-visa-invitation-letter.pdf" class="c_orange" target="_blank"><span style="padding-left:10px;"> 商务邀请信</span></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/pdf_icon.gif"></td>
+                                        <td><a href="pdf/Checklist-for-Business-visa.pdf" class="c_orange" target="_blank"><span style="padding-left:10px;"> 商务核对表 </span></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/pdf_icon.gif"></td>
+                                        <td><a href="pdf/Checklist-for-Business-visa-for-fashion-models.pdf" class="c_orange" target="_blank"><span style="padding-left:10px;">商务--照片模特，时装模特核对表 </span></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       @Html.Raw(Model.DownloadForm)
+                    </div>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </div>
+   
+</body>
+</html>

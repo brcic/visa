@@ -1,0 +1,116 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <style type="text/css">
+        body {
+            font-family:'Times New Roman', 'Arial Narrow', Arial, sans-serif,"Microsoft YaHei";
+            font-size:16px;
+            margin:20px 0 0 0; padding:0 0 0 10px;
+        }
+         table  {  width:600px; }
+        table td {  padding:2px; }
+    </style>
+</head>
+<body>
+    <p style="margin:0 auto;width:200px;font-size:36px"><strong> Receipt 收据</strong></p>
+
+   <table border="0" cellpadding="0" cellspacing="0">
+       <tr>
+           <td style="width:200px">Receipt No. 收据号</td>
+           <td>@ViewData["vReceiptNo"]</td>
+       </tr>
+       <tr>
+           <td>Type of Fee 付款类型</td>
+           <td>Visa Fees 代收签证费</td>
+       </tr>
+       <tr>
+           <td>Amount of Payment 金额</td>
+           <td>CNY @ViewData["vVisaFee"]</td>
+       </tr>
+       <tr>
+           <td colspan="2">&nbsp;</td>
+       </tr>
+       <tr>
+           <td>Type of Fee 付款类型</td>
+           <td>Visa Service Fees 签证服务费</td>
+       </tr>
+       <tr>
+           <td>Amount of Payment 金额</td>
+           <td>CNY @ViewData["vServiceFee"]</td>
+       </tr>
+       <tr>
+           <td colspan="2">&nbsp;</td>
+       </tr>
+       <tr>
+           <td>Type of Fee 付款类型</td>
+           <td>Application Support Fees 其他服务支持费</td>
+       </tr>
+       <tr>
+           <td>Amount of Payment 金额</td>
+           <td>CNY @ViewData["vSupportFee"]</td>
+       </tr>
+       <tr>
+           <td colspan="2">&nbsp;</td>
+       </tr>
+       <tr>
+           <td>Payment date 付款日期</td>
+           <td> </td>
+       </tr>
+       <tr>
+           <td>Payee 收款人</td>
+           <td>青岛非创投资有限公司</td>
+       </tr>
+       <tr>
+           <td colspan="2">&nbsp;</td>
+       </tr>
+       <tr>
+           <td style="padding-bottom:0;padding-top:12px">Payer Signature 付款人签名</td>
+           <td style="border-bottom:1px solid #000000"></td>
+       </tr>
+       <tr>
+           <td style="padding-bottom:0;padding-top:12px">Title of Invoice 发票抬头</td>
+           <td style="border-bottom:1px solid #000000"></td>
+       </tr>
+       <tr>
+           <td style="padding-bottom:0;padding-top:12px">Duty paragraph 税号</td>
+           <td style="border-bottom:1px solid #000000"></td>
+       </tr>
+       <tr>
+           <td style="padding-bottom:0;padding-top:12px">Bank of deposit 开户行</td>
+           <td style="border-bottom:1px solid #000000"></td>
+       </tr>
+       <tr>
+           <td style="padding-bottom:0;padding-top:12px">Account number 账号</td>
+           <td style="border-bottom:1px solid #000000"></td>
+       </tr>
+       <tr>
+           <td style="padding-bottom:0;padding-top:12px">Address 地址</td>
+           <td style="border-bottom:1px solid #000000"></td>
+       </tr>
+   </table>
+    <p style="width:700px;"><strong>温馨提示</strong>:如需要开发票请在付费当天向收银处索取，此收据是开具发票的唯一凭证。<br />
+        <strong>ATTENTION</strong>:Please notice that the receipt can only been collected from the cashier <span style="font-weight:bold">the day of application.</span> 
+    </p>
+    <p style="width:700px;">
+        <strong>发票说明</strong>:本中心只出具签证服务费及其他服务费的发票。签证费发票将有目的国驻华使馆出具，与护照一起封入信封返回本中心，在您取回护照时获得。<br />
+        <strong>Invoice Explanation</strong>:The Center only issued visa service fees and other service fee invoice.Visa fee invoices will be issued by the embassy in Bejing.
+    </p>
+    <p style="width:700px;">
+        发票上人民币的金额可能会与申请者实际交的金额有所差异。签证费金额以驻华使馆出具的发票上的金额为准。
+        <br />
+        It may happen that the amount in CNY on the receipts is defferent from the amount actually paid by the application.Only the amount in mentioned on the embassy in Beijing
+        receipt is evidence.
+    </p>
+    <p style="width:700px;">
+        <strong>注意</strong>:签证和服务费已交费用概不退还.<br />
+        <strong>Notice</strong>:Visa fee and service fee are not refundable.
+    </p>
+</body>
+</html>

@@ -1,0 +1,298 @@
+﻿@model Visa.Domain.Customer
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加申请人</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" media="all">
+    <script src="~/js/jquery-1.9.0.min.js"></script>
+    <script src="~/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.use(['layer', 'form', 'element', 'laydate'], function () {
+            var layer = layui.layer, form = layui.form, element = layui.element, laydate = layui.laydate;
+            laydate.render({ elem: '#textBirthdate', format: 'dd/MM/yyyy', trigger: 'click' });
+            laydate.render({ elem: '#textExpirydate', format: 'dd/MM/yyyy', trigger: 'click' });
+        
+            window.checkapply = function ()
+            {
+                var passport = $("#textPassport").val();
+                if ($.trim(passport) === "") {
+                    layer.alert("护照号码不能为空.", function (index) {
+                        layer.close(index); $("#textPassport").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                }
+                else
+                {
+                    $("#textPassport").removeClass("layui-form-danger");
+                }
+                var birthday = $("#textBirthdate").val();
+                if ($.trim(birthday) === "") {
+                    layer.alert("请输入出生日期.", function (index) {
+                        layer.close(index); $("#textBirthdate").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                }
+                else {
+                    $("#textBirthdate").removeClass("layui-form-danger");
+                }
+                var expirydate = $("#textExpirydate").val();
+                if ($.trim(expirydate) === "") {
+                    layer.alert("请输入辐照到期日期.", function (index) {
+                        layer.close(index); $("#textExpirydate").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                } else {
+                    $("#textExpirydate").removeClass("layui-form-danger");
+                }
+                var givename = $("#Givename").val();
+                if ($.trim(givename) === "") {
+                    layer.alert("名不能为空.", function (index) {
+                        layer.close(index); $("#Givename").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                }
+                else {
+                    $("#Givename").removeClass("layui-form-danger");
+                }
+                if (!(/^[a-zA-Z]+$/.test(givename))) {
+                    layer.alert("名只能输入字母.", function (index) {
+                        layer.close(index); $("#Givename").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                }
+                else {
+                    $("#Givename").removeClass("layui-form-danger");
+                }
+                var surname = $("#Surname").val();
+                if ($.trim(surname) === "") {
+                    layer.alert("姓不能为空.", function (index) {
+                        layer.close(index); $("#Surname").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                }
+                else {
+                    $("#Surname").removeClass("layui-form-danger");
+                }
+                if (!(/^[a-zA-Z]+$/.test(surname))) {
+                    layer.alert("姓只能输入字母.", function (index) {
+                        layer.close(index); $("#Surname").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                }
+                else {
+                    $("#Surname").removeClass("layui-form-danger");
+                }
+                var gender = $("#SelectGender").val();
+                if ($.trim(gender) === "") {
+                    layer.alert("请选择性别.", function (index) {
+                        layer.close(index); $("#SelectGender").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                }
+                else {
+                    $("#SelectGender").removeClass("layui-form-danger");
+                }
+                var phone = $("#textPhone").val();
+                if ($.trim(phone) === "") {
+                    layer.alert("请输入手机号.", function (index) {
+                        layer.close(index); $("#textPhone").focus().removeClass("layui-form-danger").addClass("layui-form-danger");
+                    });
+                    return false;
+                }
+                else {
+                    $("#textPhone").removeClass("layui-form-danger");
+                }
+                var reg = /^1[0-9]{10}$/; //验证规则
+                var flag = reg.test(phone); //true
+                if (flag == false) {
+                    layer.alert("手机号格式不正确", function (index) { layer.close(index); $("#textCellphone").focus().removeClass("layui-form-danger").addClass("layui-form-danger"); });
+                    return false;
+                }
+                else {
+                    $("#textPhone").removeClass("layui-form-danger");
+                }
+                var uEmail = $("#textEmail").val();
+                if ($.trim(uEmail) === "") {
+                    layer.alert("请输入邮箱.", function (index) {
+                        layer.close(index); $("#textEmail").focus();
+                    });
+                    return false;
+                }
+                else {
+                    $("#textEmail").removeClass("layui-form-danger");
+                }
+                if (!(/^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(uEmail))) {
+                    layer.alert("请输入正确的邮件格式.", function (index) { layer.close(index); $("#textEmail").focus().removeClass("layui-form-danger").addClass("layui-form-danger"); });
+                    return false;
+                }
+                else {
+                    $("#textEmail").removeClass("layui-form-danger");
+                }
+                var layerid = layer.msg('验证中...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+                $.ajax({
+                    type: 'POST',
+                    url: '/Order/Add',
+                    data: { givename: givename, surname: surname, gender: gender, uEmail: uEmail, phone: phone, passport: passport, birthday: birthday, expirydate: expirydate },
+                    dataType: 'json',
+                    success: function (data) {
+                        layer.close(layerid)
+                        if (data.status == "1") {
+                            layer.alert(data.message, function (index) {
+                                layer.close(index);
+                                layer.msg('跳转中...', { icon: 16, time: 3000, shade: [0.6, '#000', true] });
+                                window.location.href = "/Order/Applicant?burl=@ViewData["vburl"]";
+                            });
+                        }
+                        else
+                            layer.msg(data.message, { time: 2000 });
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.close(layerid)
+                    }
+                });
+            }
+        });
+      
+    </script>
+
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+       @Html.Partial("_PartialHeader")
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 10px;">
+                <h2 class="projecttitle">添加新申请人</h2>
+                <span class="layui-breadcrumb"> <a href="/Order/Place">地点</a> <a href="/Order/Applicant">申请人列表</a><a><cite>添加新申请人</cite></a> </span>
+                <div class="layui-form">
+                    <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                        <tr>
+                            <td style="width:200px">护照号码<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textPassport" lay-verify="required"  placeholder="护照号码" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>出生日期(日日/月月/年年年年)<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textBirthdate" lay-verify="required" readonly="readonly" placeholder="日日/月月/年年年年" autocomplete="off" class="layui-input">
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>护照失效日期<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textExpirydate" lay-verify="required" readonly="readonly"  placeholder="日日/月月/年年年年" autocomplete="off" class="layui-input">
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>名<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="Givename" style="text-transform:uppercase;" lay-verify="required" placeholder="名" value="@Html.DisplayFor(model=>model.Givename)" autocomplete="off" class="layui-input">
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>姓<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <input type="text" id="Surname" style="text-transform:uppercase;" lay-verify="required" placeholder="姓" value="@Html.DisplayFor(model=>model.Surname)" autocomplete="off" class="layui-input">
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>性别<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <select id="SelectGender" lay-verify="required">
+                                            <option value="">选择性别</option>
+                                            <option value="女">女</option>
+                                            <option value="男">男</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>电话号码<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-row">
+                                    <div class="layui-col-xs1">
+                                        <div class="layui-form">
+                                            <input type="text" id="textZone" readonly="readonly" lay-verify="required" placeholder="+86" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs2" style="margin-left: 10px;">
+                                        <div class="layui-form">
+                                            <input type="text" id="textPhone" lay-verify="required" placeholder="手机号" value="@Html.DisplayFor(model=>model.Cellphone)" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>电子邮箱<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-col-xs3">
+                                    <div class="layui-form">
+
+                                        <input type="text" id="textEmail" lay-verify="required" placeholder="电子邮箱" value="@Html.DisplayFor(model=>model.Email)" autocomplete="off" class="layui-input">
+
+                                    </div>
+                                </div>
+                                
+                            </td>
+                        </tr>
+
+                    </table>
+                    <br>
+                    <br>
+                    <div>
+                        <a href="javascript:window.history.go(-1)" class="layui-btn layui-btn-big">返回</a>
+                        <a href="javascript:checkapply()" class="layui-btn layui-btn-big">提交</a>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>
+</html>

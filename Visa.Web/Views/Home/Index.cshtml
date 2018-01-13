@@ -1,0 +1,176 @@
+﻿@{
+    Layout = null;
+}
+@{
+    string regionName = ViewContext.RouteData.Values["region"].ToString();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8; IE=9; IE=10; IE=EDGE" />
+
+    <title>全球签证中心</title>
+    <meta name="keywords" content="丝路全球签证中心">
+    <meta name="description" content="丝路全球签证中心">
+    <meta name="viewport" id="myViewport" content="width=device-width, initial-scale=1.0" />
+    @Html.Partial("_PartialCss")
+
+</head>
+<body>
+
+    <div class="container">
+       @Html.Partial("_PartialHeader")
+        <section class="banner">
+            <div class="wrapper">
+                <div class="center text_center padt15">
+                    <h1 class="caps c_blue light fbold">简单三步</h1>
+                </div>
+            </div>
+        </section>
+        <div class="wrapper">
+            <section class="steps home_step">
+                <ul class="step_icons">
+                    <li class="step01 ico marr94"><a href="/@regionName/Step/Know_Your_Visa_Type" name="stepOne" title="Know Your Visa Type"></a></li>
+                    <li class="step02 ico marr94"><a href="/@regionName/Step/How_To_Apply" name="stepTwo" title="How To Apply"></a></li>
+                    <li class="step03 ico"><a href="/@regionName/Step/After_Submission" name="stepThree" title="After Submission"></a></li>
+                </ul>
+                <div class="step_content w775 center" id="stepOne">
+                    <p class="text_center">丝路全球签证中心是为需要申请签证提供服务。该网站为您提供签证申请其他您所需的更多信息。</p>
+                </div>
+
+            </section>
+            <!--Responsive-->
+            <div class="home_step_responsive_parent">
+                <div class="home_step_responsive">
+                    <div class="step01 ico"><a href="/@regionName/Step/Know_Your_Visa_Type" name="stepOne" class="ico_active" title="Know Your Visa Type"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step02 ico"><a href="/@regionName/Step/How_To_Apply" name="stepTwo" title="How To Apply"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step03 ico"><a href="/@regionName/Step/After_Submission" name="stepThree" title="After Submission"></a></div>
+                    <div class="r_step_content w775 center">
+                        <p class="text_center"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="wrapper mart20">
+                <div class="box bg_grey border_blue floatl marr15 h253" id="visa_types_box1">
+                    <h3 class="c_blue caps">申请签证</h3>
+                    <div id="scrollbar_section" class="scrollbar1">
+                        <div class="scrollbar">
+                            <div class="track">
+                                <div class="thumb">
+                                    <div class="end"></div>
+                                </div>
+                            </div>
+                        </div>
+                        @{
+                            List<KeyValuePair<string, string>> lsmenu = (List<KeyValuePair<string, string>>)ViewData["vmenu"];
+                            List<Visa.Domain.DownloadForm> lsform = (List<Visa.Domain.DownloadForm>)ViewData["vform"];
+                        }
+                        <div class="viewport">
+                            <div class="overview">
+                                <ul>
+                                    @foreach (var item in lsmenu)
+                                    {
+                                        <li><a href="/@(regionName)/Visa/@item.Value.Replace(" ","-")" title="@item.Key">@item.Key</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box bg_grey border_blue floatl marr15 h253">
+                    <div class="scroll_ctrl w264">
+                        <h3 class="c_blue caps marb10">下载</h3>
+                        <h6 class="c_blue caps marb20">签证表格及相关样本</h6>
+                        <div class="visa_form">
+                            <form>
+                                <select class="form_list">
+                                    <option value="#">签证表格及相关样本</option>
+                                    @foreach (var item in lsform)
+                                    {
+                                        <option value="http://gl.globalvisacenter.org/Material/@item.FileValue">@item.FileName</option>
+                                    }
+                                </select><a id="visaform1" href="###" target="_blank"></a>
+                            </form>
+                        </div>
+                        <div class="border_grey_download marpad"></div>
+                        <h6 class="c_blue caps marb20">签证费一览</h6>
+                        <a href="/@(regionName)/Fee" class="green_bt floatr">点击此处</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="box bg_grey border_blue floatl h243 nopadBox">
+                    <div id="cycle_banner_wrapper1" class="cycle_banner_wrapper">
+                        <a href="###">
+                            <div class="cycle_banner">
+                                <img src="/images/box-banner/courier-services.jpg" alt="Courier" />
+                                <img src="/images/box-banner/photobooth-facility.jpg" alt="Photobooth" />
+                                <img src="/images/box-banner/photocopy-services.jpg" alt="Photocopy" />
+                                <img src="/images/box-banner/premium-lounge.jpg" alt="Premium-Lounge" />
+                            </div>
+                        </a>
+                        <div class="cycle_pager"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="box bg_grey border_blue floatl marr15 h253">
+                    <h3 class="c_blue caps marb10">VIP 预约申请</h3>
+                    <img src="/images/icons/calender.png" alt="" class="floatl marr15" width="46" height="45">
+                    <div class="floatl w208">
+                        <p class="font14 semibold marb10 l_height18">预约前往签证中心</p>
+                        <a href="http://apply.globalvisacenter.org" target="_blank" class="green_bt floatr">点击此处</a>
+                    </div>
+                    <div class="clear"></div>
+                    <h3 class="c_blue caps marb10">查询请进进度</h3>
+                    <img src="/images/icons/laptop.png" alt="" class="floatl marr15" width="45" height="35">
+                    <div class="floatl w208">
+                        <p class="font14 semibold marb10 l_height18">如果您已经在签证申请中心递交申请，您可以查询您的申请状态</p>
+                        <a href="###" target="_blank" class="green_bt floatr">点击此处</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="box bg_grey border_blue floatl marr15 h253">
+                    <h3 class="c_blue caps marb5">丝路签证申请中心</h3>
+                    <img src="/images/icons/locate_icon.png" alt="" class="floatl marr10">
+                    <p class="font14 w180 floatl semibold">选择离您最近的签证申请中心</p>
+                    <div class="clear"></div>
+                    <div class="city mart20">
+                        <form>
+                            <select class="city_list">
+                                <option>选择最近签证申请中心</option>
+                                <option value="1">青岛</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <div class="box bg_grey border_blue floatl h253">
+
+
+
+
+                    <h3 class="c_blue caps marb5">新闻及更新</h3>
+
+                    <p class="font14 c_blue">被大学录取的学生：</p>
+                    <p class="font11 marb10">Published on 30 August 2017</p>
+
+                    <p class="font14 c_blue">持有乌克兰电子护照的公民，从2017年6月11日起无需申请短期申根签证（90天以内C种类签证）...</p>
+                    <p class="font11 marb10">Published on 18 June  2017</p>
+
+                    <a href="news.html" class="green_bt floatr">更多</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </div>
+
+</body>
+</html>

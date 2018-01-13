@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="http://www.globalvisacenter.org/js/jquery-1.8.2.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('#select1').change(function () {
+            if ($(this).val() != '#') {
+                $("#visaform1").attr("href", $(this).val());
+                document.getElementById('visaform1').click(); // Works!
+            }
+        });
+    });
+    </script>
+
+</head>
+<body>
+    <div>
+        <select id="select1" class="form_list">
+            <option value="#">签证表格及相关样本</option>
+            <option value="http://gl.globalvisacenter.org/Material/20171117101146.pdf">加纳商务签证所需材料</option>
+            <option value="http://gl.globalvisacenter.org/Material/20171117105447.pdf">学习签证材料</option>
+            <option value="http://gl.globalvisacenter.org/Material/20171117105623.pdf">访问签证-旅所需材料</option>
+            <option value="http://gl.globalvisacenter.org/Material/20171117105729.pdf">访问签证（过境）</option>
+            <option value="http://gl.globalvisacenter.org/Material/20171117112455.pdf">访问签证（访友）</option>
+            <option value="http://gl.globalvisacenter.org/Material/20171117112629.pdf">访问签证（儿童）</option>
+        </select><a id="visaform1" href="###" target="_blank"></a>
+
+    </div>
+  
+</body>
+</html>

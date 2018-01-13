@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visa.Web", "Visa.Web\Visa.Web.csproj", "{3C73D6DC-54FB-4465-BFC0-EF93F330E73B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visa.Domain", "Visa.Domain\Visa.Domain.csproj", "{51B54931-B75E-4FE0-91E6-54571B112E42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visa.Service", "Visa.Service\Visa.Service.csproj", "{39D0513A-8F3B-45C6-87BB-C91700EA01AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTool", "DataTool\DataTool.csproj", "{D2EE55C1-DA21-4C3E-BF1F-07CC62154357}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visa.Admin", "Visa.Admin\Visa.Admin.csproj", "{BC851180-DE11-4B3E-841B-BB7ECD41937B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visa.Bespeak", "Visa.Bespeak\Visa.Bespeak.csproj", "{5F22E826-AD76-4B7A-8D58-2CDB86092EB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visa.Gather", "Visa.Gather\Visa.Gather.csproj", "{8A57C8BD-1A64-466B-907F-B0BF7713AD87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C73D6DC-54FB-4465-BFC0-EF93F330E73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C73D6DC-54FB-4465-BFC0-EF93F330E73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C73D6DC-54FB-4465-BFC0-EF93F330E73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C73D6DC-54FB-4465-BFC0-EF93F330E73B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51B54931-B75E-4FE0-91E6-54571B112E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51B54931-B75E-4FE0-91E6-54571B112E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51B54931-B75E-4FE0-91E6-54571B112E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51B54931-B75E-4FE0-91E6-54571B112E42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D0513A-8F3B-45C6-87BB-C91700EA01AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D0513A-8F3B-45C6-87BB-C91700EA01AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D0513A-8F3B-45C6-87BB-C91700EA01AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D0513A-8F3B-45C6-87BB-C91700EA01AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2EE55C1-DA21-4C3E-BF1F-07CC62154357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2EE55C1-DA21-4C3E-BF1F-07CC62154357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2EE55C1-DA21-4C3E-BF1F-07CC62154357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2EE55C1-DA21-4C3E-BF1F-07CC62154357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC851180-DE11-4B3E-841B-BB7ECD41937B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC851180-DE11-4B3E-841B-BB7ECD41937B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC851180-DE11-4B3E-841B-BB7ECD41937B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC851180-DE11-4B3E-841B-BB7ECD41937B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F22E826-AD76-4B7A-8D58-2CDB86092EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F22E826-AD76-4B7A-8D58-2CDB86092EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F22E826-AD76-4B7A-8D58-2CDB86092EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F22E826-AD76-4B7A-8D58-2CDB86092EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A57C8BD-1A64-466B-907F-B0BF7713AD87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A57C8BD-1A64-466B-907F-B0BF7713AD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A57C8BD-1A64-466B-907F-B0BF7713AD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A57C8BD-1A64-466B-907F-B0BF7713AD87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

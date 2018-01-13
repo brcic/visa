@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+}
+
+@{
+    string regionName = ViewContext.RouteData.Values["region"].ToString();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8; IE=9; IE=10; IE=EDGE" />
+    <meta name="viewport" id="myViewport" content="width=device-width, initial-scale=1.0" />
+    <title>联系我们 - China (Qingdao)  - Contact Us</title>
+    <meta name="keywords" content="联系我们">
+    <meta name="description" content="联系我们">
+ 
+    @Html.Partial("_PartialCss")
+
+</head>
+<body>
+    <div class="container">
+        @Html.Partial("_PartialHeader")
+        <section class="banner">
+            <div class="wrapper">
+                <div class="breadcrumb padt20">
+                    <ul class="clearfix">
+                        <li><a href="/@regionName/Home"> 首页</a></li>
+                        <li>&gt;</li>
+                        <li><a >联系我们</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="center text_center padt25">
+                    <h1 class="caps c_blue light fbold"> 联系我们</h1>
+                </div>
+            </div>
+        </section>
+        <div class="wrapper">
+            <section class="steps">
+                <ul class="step_icons">
+                    <li class="step01 ico marr94"><a href="/@regionName/Step/Know_Your_Visa_Type" title="准备您的申请"></a></li>
+                    <li class="step02 ico marr94"><a href="/@regionName/Step/How_To_Apply" class="ico_active" title="如何申请"></a></li>
+                    <li class="step03 ico"><a href="/@regionName/Step/After_Submission" title="完成递交"></a></li>
+                    <li class="clear ico"></li>
+                </ul>
+            </section>
+            <!--Responsive-->
+            <div class="home_step_responsive_parent">
+                <div class="home_step_responsive">
+                    <div class="step01 ico"><a href="/@regionName/Step/Know_Your_Visa_Type" title="准备您的申请"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step02 ico"><a href="/@regionName/Step/How_To_Apply" class="ico_active" title="如何申请"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step03 ico"><a href="/@regionName/Step/After_Submission" title="完成递交"></a></div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="wrapper">
+                <div class="pad22 mart15">
+                    <h4 class="tourist_title_main marb15 caps">联系我们</h4>
+                    <div class="tourist_text">
+                        <p class="marb20"><strong>您可以通过以下任一渠道与我们联系：</strong></p>
+                        <div class="v_centers" >
+                            <div class="floatl w500">
+                                <div class="th">
+                                    <div class="til"><strong>青岛</strong></div>
+                                </div>
+                                <div class="tr">
+                                    <p>
+                                        提交签证申请<br>
+                                        <br>
+                                        <strong>地址： </strong>青岛李沧区铜川路216号1号楼<br>
+
+                                    </p>
+                                    <p>递交材料营业时间：</p>
+                                    <p>
+                                        周一至周五8：00至15：00（除了假日以外）<br>
+                                        <br>
+                                        查询一般信息：<br><br>
+
+                                        请于周一至周五 8:00 至 17：00 拨打 0532-58537777 或 0532-58538888 (除了假日以外)<br>
+                                        <br>
+                                        电子邮件:<a href="mailto:visa@globalvisacenter.org" class="c_orange">visa@@globalvisacenter.org</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="floatl w395">
+                                <div class="th th-last">
+                                    <div class="til"><strong>地图</strong></div>
+                                </div>
+                                <div class="tr tr-last"><a href="images/Map_New_Center.jpg" target="_blank"><img src="images/Map_New_Center.jpg" width="100%" height="200" alt=""></a> </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>
+</html>

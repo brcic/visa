@@ -1,0 +1,348 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: 'sourcesanspro';
+	src: url('fonts/sourcesanspro-regular-webfont.eot');
+	src: url('fonts/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/sourcesanspro-regular-webfont.woff') format('woff'), url('fonts/sourcesanspro-regular-webfont.ttf') format('truetype'), url('style.css') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'sourcesanspro-semibold';
+	src: url('fonts/sourcesanspro-semibold-webfont.eot');
+	src: url('style.css') format('embedded-opentype'), url('fonts/sourcesanspro-semibold-webfont.woff') format('woff'), url('fonts/sourcesanspro-semibold-webfont.ttf') format('truetype'), url('style.css') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'sourcesanspro-bold';
+	src: url('fonts/sourcesanspro-bold-webfont.eot');
+	src: url('fonts/sourcesanspro-bold-webfont?#iefix') format('embedded-opentype'), url('fonts/sourcesanspro-bold-webfont.woff') format('woff'), url('fonts/sourcesanspro-bold-webfont.ttf') format('truetype'), url('fonts/sourcesanspro-bold-webfont.svg#Zurich BT') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'sourcesanspro-extralight';
+	src: url('fonts/sourcesanspro-extralight-webfont.eot');
+	src: url('fonts/sourcesanspro-extralight-webfont?#iefix') format('embedded-opentype'), url('fonts/sourcesanspro-extralight-webfont.woff') format('woff'), url('fonts/sourcesanspro-extralight-webfont.ttf') format('truetype'), url('fonts/sourcesanspro-extralight-webfont.svg#Zurich BT') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	margin: 0px;
+	color: #FFF;
+	font-size: 14px;
+	font-family: 'sourcesanspro';
+	background: url(../img/qingdao-bg.jpg) no-repeat top center fixed;
+	background-size: cover;
+}
+::-moz-selection {
+	color: #FFF;
+	background: #CE6A15;
+}
+::selection {
+	color: #FFF;
+	background: #CE6A15;
+}
+html, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav, menu, nav, section, summary {
+	display: block;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+a {
+	text-decoration: none;
+	outline: 0;
+	color: #FFF;
+}
+a:hover {
+	text-decoration: none;
+}
+a img {
+    border: none;
+}
+ul {
+	list-style: none;
+}
+.clear {
+	clear: both;
+}
+
+.wrapper {
+	width: 940px;
+	margin: 0 auto;
+}
+
+.pad_footer {
+    padding-bottom: 50px;
+}
+
+.responsive {
+	display: none;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.image_hover_wrapper {
+	position: relative;
+}
+.image_hover_wrapper * {
+    display: block;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.image_hover_wrapper > .hover {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+ul.column_list {
+	width: 100%;
+}
+ul.column_list > li {
+	float: left;
+}
+ul.column_list:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+ul.column_list.type1.col1 > li {
+	width: 100%;
+}
+ul.column_list.type1.col2 > li {
+	width: 50%;
+}
+ul.column_list.type1.col3 > li {
+	width: 33.33%;
+}
+ul.column_list.type1.col4 > li {
+	width: 25%;
+}
+ul.column_list.type1.col5 > li {
+	width: 20%;
+}
+ul.column_list.type1.col6 > li {
+	width: 16.66%;
+}
+ul.column_list.type1.col7 > li {
+	width: 14.28%;
+}
+
+.background_image {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+.background_image > img {
+    position: relative;
+}
+
+header {
+	background: #a72127;
+	color: #FFF;
+	padding: 20px 0px;
+}
+header > .wrapper {
+	display: table;
+}
+header > .wrapper > .vfs_global_logo {
+	float: left;
+}
+header > .wrapper > .heading_language_wrapper {
+	float: right;
+	padding-top: 20px;
+	text-align: right;
+}
+header > .wrapper:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+header > .wrapper > .heading_language_wrapper > .flag_heading_wrapper * {
+	display: inline-block;
+	vertical-align: middle;
+}
+header > .wrapper > .heading_language_wrapper >.flag_heading_wrapper > h2 {
+	font-size: 21px;
+}
+header > .wrapper > .heading_language_wrapper > .flag_heading_wrapper > img {
+	margin-left: 15px;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper {
+	padding-top: 15px;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper > ul {
+	float: right;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper > ul > li {
+	float: left;
+	font-size: 12px;
+	line-height: 15px;
+	margin-bottom: 5px;
+	padding-right: 10px;
+    border-right: 1px solid #FFF;
+    margin-right: 10px;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper > ul:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper > ul > li.last {
+	padding-right: 0px;
+    border-right: none;
+    margin-right: 0px;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper > ul > li > a {
+	color: #FFF;
+}
+
+.top_content_wrapper {
+	padding: 20px;
+	text-align: center;
+	background: url(../img/icons/black-opacity-50.png);
+	border-radius: 0px 0px 15px 15px;
+	text-shadow: 1px 1px 3px #000;
+}
+.top_content_wrapper > h1 {
+    font-size: 32px;
+	font-family: 'sourcesanspro-semibold';
+}
+.top_content_wrapper > p {
+	font-size: 16px;
+}
+
+ul.region_list {
+	padding-top: 15px;
+}
+ul.region_list > li {
+	display: table;
+	padding-top: 15px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+ul.region_list > li > span {
+	display: table-cell;
+	vertical-align: bottom;
+}
+ul.region_list > li > span > a {
+	display: block;
+}
+ul.region_list > li > span > a > span {
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+}
+ul.region_list > li > span > a > .image_hover_wrapper {
+	width: 125px;
+	margin: 10px auto;
+}
+ul.region_list > li > span > a > .image_hover_wrapper * {
+	width: 100%;
+}
+ul.region_list > li > span > a > .image_hover_wrapper > .hover {
+	top: auto;
+	bottom: 0px;
+	width: 100%;
+	height: 0%;
+	overflow: hidden;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -o-transition: all 0.7s;
+    transition: all 0.7s;
+}
+ul.region_list > li > span > a > .image_hover_wrapper > .hover > img {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+}
+ul.region_list > li > span > a:hover > .image_hover_wrapper > .hover,
+ul.region_list > li > span > a.active > .image_hover_wrapper > .hover {
+	height: 100%;
+}
+
+.country_list_wrapper {
+	margin-top: 20px;
+	background: url(../img/icons/black-opacity-50.png);
+	border-radius: 15px;
+	padding: 10px;
+}
+.country_list_wrapper ul > li {
+	display: table;
+}
+.country_list_wrapper ul > li > span {
+	display: table-cell;
+	vertical-align: bottom;
+}
+.country_list_wrapper ul > li > span > a {
+	display: block;
+	position: relative;
+	padding: 15px 0px;
+}
+.country_list_wrapper ul > li > span > a:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0%;
+	bottom: 0%;
+	width: 100%;
+	height: 0%;
+	background: url(../img/icons/black-opacity-60.png);
+	border-radius: 15px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.country_list_wrapper ul > li > span > a:hover:before {
+	height: 100%;
+}
+.country_list_wrapper ul > li > span > a > span {
+	display: block;
+	position: relative;
+	text-align: center;
+	line-height: 16px;
+}
+.country_list_wrapper ul > li > span > a > img {
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 5px;
+	border: 1px solid #666;
+}
+
+footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding: 7px 0px;
+    background: url(../img/icons/black-opacity-50.png);
+    color: #FFF;
+    text-align: center;
+    z-index: 9;
+}

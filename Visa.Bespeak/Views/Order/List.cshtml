@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Visa.Domain.ApplyView>
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>我的预约记录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/global.css" media="all">
+    <script src="~/js/jquery-1.9.0.min.js"></script>
+    <script src="~/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.use(['layer','element'], function () {
+            var layer = layui.layer, element = layui.element;
+            window.checkprint = function () {
+                var printid = "";
+                $("input[name='checkboxprint']:checked").each(function () {
+                    printid += $(this).val() + ",";
+                });
+                if ($.trim(printid) === "") {
+                    layer.alert("请至少选择一个要下载预约信.", function (index) {
+                        layer.close(index); $("#EmergencyContact").focus();
+                    });
+                    return false;
+                }
+                var layerid = layer.msg('正在生成下载文件...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+                $.ajax({
+                    type: 'POST',
+                    url: '/Order/Cfile',
+                    data: { printid: printid },
+                    dataType: 'json',
+                    success: function (data) {
+                        layer.close(layerid);
+                        window.location.href = "/Apply/Download?f=" + data.file;
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) { layer.close(layerid); }
+                });
+            }
+        });
+       
+    </script>
+
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        @Html.Partial("_PartialHeader")
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <fieldset class="layui-elem-field layui-field-title" >
+                    <legend>我的预约记录</legend>
+                </fieldset>
+                <p>选择一个预约记录然后填写签证申请单 <br><span style="color:red">未填写完申请表不能打印</span></p>
+                <div class="layui-table-body layui-table-main">
+                    <table class="layui-table">
+
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>名</th>
+                                <th>姓</th>
+                                <th>电话号码</th>
+                                <th>护照号码</th>
+                                <th>目的国家</th>
+                                <th>预约序号</th>
+                                <th>申请表状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="tr_@item.Id">
+                                    @if (item.ApStatus == 1)
+                                    {
+                                        <td><input type="checkbox" name="checkboxprint" value="@item.Id"></td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox" name="checkboxprint" value="@item.Id" disabled="disabled"></td>
+                                    }
+                                    <td>@item.Givename</td>
+                                    <td>@item.Surname</td>
+                                    <td>@item.Cellphone</td>
+                                    <td>@item.Passport</td>
+                                    <td>@item.VisitCountry</td>
+                                    <td>@item.ApplyNumber</td>
+                                    <td>
+                                    @if (item.ApStatus == 0) 
+                                    {
+                                        <a style="color:red">未完成</a>
+                                    }
+                                    else
+                                    {
+                                        <a>已完成</a>
+                                    }
+                                    </td>
+                                    <td>
+                                        @if (item.ApStatus == 0)
+                                        {
+                                            <a href="/Apply/Add?id=@item.Id&visit=@item.VisitCountry">填写申请表</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/Apply/Edit?id=@item.Id&visit=@item.VisitCountry">查看申请表</a>
+                                            if (item.FillMode == "手写") 
+                                            {
+                                                @:|<a href="/template/@(item.VisitCountry).pdf" target="_blank">打印申请表</a>
+                                            }
+                                            else 
+                                            {
+                                                @:|<a href="/visafile/@(item.Surname.Replace(" ","_"))_@(item.Givename.Replace(" ", "_"))_@(item.Id).pdf" target="_blank">打印申请表</a>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <br><br>
+                <button type="button" class="layui-btn layui-btn-big" onclick="checkprint()">下载预约信（pdf）</button>下载后打印
+            </div>
+        </div>
+        @Html.Partial("_PartialFooter")
+    </div>
+
+</body>
+</html>

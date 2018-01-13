@@ -1,0 +1,295 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>地点</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" media="all">
+    <script src="~/js/jquery-1.10.2.js"></script>
+    <script src="~/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.use(['layer', 'form', 'element'], function () {
+            var layer = layui.layer, form = layui.form;
+            var fmode = "机打";
+            function isPoneAvailable(str) {
+                var myreg = /^[1][3,4,5,7,8]{9}$/;
+                if (!myreg.test(str)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            window.checkstep = function ()
+            {
+                var visit = $("#SelectVisit").val();
+                if (visit == "") {
+                    layer.alert("请选择签证国家.", function (index) {
+                        layer.close(index);
+                    });
+                    return false;
+                }
+                var residence = $("#SelectResidence").val();
+                var placename = $("#SelectPlace").val();
+                if (placename == "0") {
+                    layer.alert("请选择申请签证的地点.", function (index) {
+                        layer.close(index);
+                    });
+                    return false;
+                }
+                var vtype = $("#SelectType").val();
+                if (vtype == "")
+                {
+                    layer.alert("请选择签证类型.", function (index) {
+                        layer.close(index);
+                    });
+                    return false;
+                }
+                var vfee = $("#SelectEntry").val();
+              
+                    if (vfee == 0)
+                    {
+                        layer.alert("请选择入境期限或次数.", function (index) {
+                            layer.close(index);
+                        });
+                        return false;
+                    }
+                    var takeway = $("#SelectPost").val();
+                    var addr = $("#textAddr").val();
+                    var cellpone = $("#textCellpone").val();
+                    if (takeway == "是")
+                    {
+                        if ($.trim(addr) == "") {
+                            layer.alert("收件地址不能为空.", function (index) {
+                                layer.close(index); $("#textAddr").focus();
+                            });
+                            return false;
+                        }
+                        if ($.trim(cellpone) == "") {
+                            layer.alert("收件人手机号不能为空.", function (index) {
+                                layer.close(index); $("#textCellpone").focus();
+                            });
+                            return false;
+                        }
+                    }
+                var layerid = layer.msg('验证中...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+                $.ajax({
+                    type: 'POST',
+                    url: '/Order/Place',
+                    data: { visit: visit, residence: residence, placename: placename, vtype: vtype },
+                    dataType: 'json',
+                    success: function (data) {
+                        layer.close(layerid);
+                        if (data.status == "1") {
+                            layer.alert(data.message, function (index) {
+                                layer.close(index);
+                                layer.msg('跳转中...', { icon: 16, time: 3000, shade: [0.6, '#000', true] });
+                                window.location.href = "/Order/Applicant?visit=" + encodeURI(visit) + "&residence=" + encodeURI(residence) + "&placename=" + encodeURI(placename) + "&vtype=" + encodeURI(vtype) + "&vfee=" + vfee;
+                            });
+                        }
+                        else
+                            layer.msg(data.message, { time: 2000 });
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.close(layerid);
+                    }
+                });
+            }
+            form.on('select(visit)', function (data) {
+                console.log(data.value);
+                $.ajax({
+                    type: 'POST',
+                    url: '/Order/GetVisa',
+                    data: { visit: data.value },
+                    dataType: 'html',
+                    success: function (data) {
+                        $("#SelectType").html(data);
+                        form.render('select', 'visatype1'); //更新 lay-filter="test2" 所在容器内的全部 select 状态
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '/Order/GetFill',
+                    data: { visit: data.value },
+                    dataType: 'text',
+                    success: function (data) {
+                        fmode = data;
+                        if (fmode == "手写") {
+                            $("#td_entry").show();
+                        }
+                        else
+                        {
+                            $("#td_entry").hide();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            });
+            form.on('select(_vtype)', function (data) {
+                console.log(data.value);
+                var visit = $("#SelectVisit").val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/Order/GetEntry',
+                    data: { eng: data.value, visit: visit },
+                    dataType: 'html',
+                    success: function (data) {
+                        $("#SelectEntry").html(data);
+                        form.render('select', 'visaentry'); //更新 lay-filter="test2" 所在容器内的全部 select 状态
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            });
+        });
+       
+    </script>
+    <style type="text/css">
+        .mandatory {color:#ff0000 }
+    </style>
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        @Html.Partial("_PartialHeader")
+       
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 16px;">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>开始预约</legend>
+                </fieldset>
+                <form class="layui-form">
+                    <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                        <tr>
+                            <td>选择访问国<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <select id="SelectVisit" name="SelectVisit" lay-filter="visit" lay-verify="required">
+                                            <option value="">--请选择--</option>
+                                            <option value="BJ">贝宁</option>
+                                            <option value="NE">尼日尔</option>
+                                            <option value="TJ">塔吉克斯坦</option>
+                                            <option value="AM">亚美尼亚</option>
+                                            <option value="SO">索马里</option>
+                                            <option value="CD">刚果金</option>
+                                            <option value="ZW">津巴布韦</option>
+                                            <option value="GM">冈比亚</option>
+                                            <option value="GH">加纳</option>
+                                            <option value="CG">刚果布</option>
+                                            <option value="CJ">吉布提</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>选择居住国<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <select id="SelectResidence" name="SelectResidence" lay-verify="required">
+                                            <option value="CHINA">中国</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>地点<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form">
+                                    <div class="layui-inline">
+                                        <select id="SelectPlace" name="SelectPlace" lay-verify="required">
+                                            <option value="0">选择地点</option>
+                                            <option value="Qingdao">青岛</option>
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>选择签证类别<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form" lay-filter="visatype1">
+                                    <div class="layui-inline">
+                                        <select id="SelectType" name="SelectType" lay-filter="_vtype" lay-verify="required">
+                                            <option value="">选择签证类别</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="td_entry">
+                            <td>入境期限次数(或者加急)</td>
+                            <td>
+                                <div class="layui-form" lay-filter="visaentry">
+                                    <div class="layui-inline">
+                                        <select id="SelectEntry" name="SelectEntry" lay-verify="required">
+                                            <option value="0">无</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>是否需要邮寄<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form" lay-filter="psot">
+                                    <div class="layui-inline">
+                                        <select id="SelectPost" name="SelectPost">
+                                            <option value="否">否</option>
+                                            <option value="是">是</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>收件地址<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form" lay-filter="address">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textAddr" lay-verify="required" placeholder="收件地址"  class="layui-input">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>收件人手机<span class="mandatory">*</span></td>
+                            <td>
+                                <div class="layui-form" lay-filter="address">
+                                    <div class="layui-inline">
+                                        <input type="text" id="textCellpone" lay-verify="required" placeholder="收件人手机" class="layui-input">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                
+               
+                <br><br><br>
+                <a href="javascript:checkstep()" class="layui-btn layui-btn-big">继续</a>
+            </div>
+        </div>
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>
+</html>

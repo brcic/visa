@@ -1,0 +1,190 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media only screen and (max-width : 979px) and (min-width : 680px) {
+body {
+	font-size: 13px;
+}
+.wrapper {
+	width: 96%;
+}
+.pad_footer {
+    padding-bottom: 45px;
+}
+header {
+	padding: 15px 0px;
+}
+header > .wrapper > .vfs_global_logo img {
+	width: 300px;
+}
+header > .wrapper > .heading_language_wrapper {
+	padding-top: 15px;
+}
+header > .wrapper > .heading_language_wrapper > .flag_heading_wrapper > h2 {
+	font-size: 18px;
+}
+header > .wrapper > .heading_language_wrapper > .flag_heading_wrapper > img {
+	width: 35px;
+	margin-left: 12px;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper {
+	padding-top: 12px;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper > ul > li {
+	margin-bottom: 4px;
+	padding-right: 8px;
+    margin-right: 8px;
+}
+.top_content_wrapper {
+	padding: 15px;
+	border-radius: 0px 0px 12px 12px;
+	text-shadow: 1px 1px 2px #000;
+}
+.top_content_wrapper > h1 {
+    font-size: 26px;
+}
+.top_content_wrapper > p {
+	font-size: 14px;
+}
+ul.region_list {
+	padding-top: 12px;
+}
+ul.region_list > li {
+	padding-top: 12px;
+}
+ul.region_list > li > span > a > .image_hover_wrapper {
+	width: 110px;
+	margin: 8px auto;
+}
+.country_list_wrapper {
+	margin-top: 15px;
+	border-radius: 12px;
+	padding: 8px;
+}
+.country_list_wrapper ul > li > span > a:before {
+	border-radius: 12px;
+}
+.country_list_wrapper ul > li > span > a > span {
+	line-height: 14px;
+}
+.country_list_wrapper ul > li > span > a > img {
+	width: 35px;
+	margin-top: 4px;
+}
+footer {
+    padding: 5px 0px;
+}
+.mCSB_scrollTools {
+	width: 12px;
+}
+}
+
+@media only screen and (max-width : 679px) {
+body {
+	font-size: 12px;
+}
+.wrapper {
+	width: 96%;
+}
+.pad_footer {
+    padding-bottom: 40px;
+}
+header {
+	padding: 12px 0px;
+}
+header > .wrapper > .vfs_global_logo,
+header > .wrapper > .heading_language_wrapper {
+	float: none;
+	text-align: center;
+}
+header > .wrapper > .vfs_global_logo img {
+	width: 280px;
+	margin-bottom: 12px;
+}
+header > .wrapper > .heading_language_wrapper {
+	padding-top: 0px;
+}
+header > .wrapper > .heading_language_wrapper > .flag_heading_wrapper > h2 {
+	font-size: 16px;
+}
+header > .wrapper > .heading_language_wrapper > .flag_heading_wrapper > img {
+	width: 30px;
+	margin-left: 10px;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper {
+	padding-top: 10px;
+}
+header > .wrapper > .heading_language_wrapper > .language_wrapper > ul {
+	display: table;
+	float: none;
+	margin: 0 auto;
+}
+.top_content_wrapper {
+	padding: 12px;
+	border-radius: 0px 0px 10px 10px;
+	text-shadow: 1px 1px 1px #000;
+}
+.top_content_wrapper > h1 {
+    font-size: 22px;
+}
+.top_content_wrapper > p {
+	font-size: 13px;
+}
+ul.region_list {
+	padding-top: 10px;
+}
+ul.region_list > li {
+	padding-top: 10px;
+}
+ul.region_list > li > span > a > .image_hover_wrapper {
+	width: 100px;
+	margin: 6px auto;
+}
+.country_list_wrapper {
+	margin-top: 12px;
+	border-radius: 10px;
+	padding: 6px;
+}
+.country_list_wrapper ul > li > span > a:before {
+	border-radius: 10px;
+}
+.country_list_wrapper ul > li > span > a > span {
+	line-height: 13px;
+}
+.country_list_wrapper ul > li > span > a > img {
+	width: 30px;
+	margin-top: 3px;
+}
+footer {
+    padding: 4px 0px;
+}
+.mCSB_scrollTools {
+	width: 8px;
+}
+}
+
+@media only screen and (max-width : 419px) {
+.responsive {
+	display: block;
+}
+ul.region_list {
+	display: none;
+}
+.country_list_wrapper {
+	display: none;
+}
+.region_dropdown_wrapper {
+	padding: 20px 0px;
+	text-align: center;
+}
+.region_dropdown_wrapper > label,
+.country_dropdown_wrapper > label {
+	display: inline-block;
+	font-size: 13px;
+	padding-bottom: 5px;
+}
+.region_dropdown_wrapper select,
+.country_dropdown_wrapper select {
+	width: 200px;
+}
+}

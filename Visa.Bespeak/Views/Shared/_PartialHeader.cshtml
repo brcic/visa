@@ -1,0 +1,43 @@
+﻿@{
+    string controllerName = ViewContext.RouteData.Values["controller"].ToString();
+    string actionName = ViewContext.RouteData.Values["action"].ToString();
+    string userName = "";
+    HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+    if (authCookie != null)
+    {
+        FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+        if (authTicket != null)
+        {
+            string userData = authTicket.UserData;
+            Visa.Domain.Customer model = Newtonsoft.Json.JsonConvert.DeserializeObject<Visa.Domain.Customer>(userData);
+            userName = model.Surname + " " + model.Givename;
+        }
+    }
+}
+<div class="layui-header">
+    <div class="layui-logo">签证预约</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item"> <a href="javascript:;">@userName</a> </li>
+        <li class="layui-nav-item"><a href="/Account/Logout">登出</a></li>
+    </ul>
+</div>
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <li class="layui-nav-item layui-nav-itemed" >
+                <a class="" href="javascript:;">操作</a>
+                <dl class="layui-nav-child">
+                    <dd class="@( controllerName == "Order" && actionName == "Place" ? "layui-this" : "")"><a href="/Order/Place">预约</a></dd>
+                    <dd class="@(controllerName == "Order" && actionName == "List" ? "layui-this" : "")"><a href="/Order/List">我的预约</a></dd>
+                    <dd class="@(controllerName == "Afresh" && actionName == "List" ? "layui-this" : "")"><a href="/Afresh/List">重新预约</a></dd>
+                    <dd class="@(controllerName == "Cancel" && actionName == "List" ? "layui-this" : "")"><a href="/Cancel/List">取消预约</a></dd>
+                    <dd class="@(controllerName == "Print" && actionName == "Index" ? "layui-this" : "")"><a href="/Print/Index">打印预约</a></dd>
+                    <dd class="@(controllerName == "Help" && actionName == "Index" ? "layui-this" : "")"><a href="/Help/Index">帮助(<span style="color:#ff0000">必看</span>)</a></dd>
+                </dl>
+            </li>
+           
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,196 @@
+﻿@model IEnumerable<Visa.Domain.ApplicantView>
+<script src="/layer/layer.js"></script>
+<script type="text/javascript">
+   
+    function checkfind() {
+        var url = "/Apply/List?s=pf";
+        var country = $("#SelectCountry").val();
+        if (country != "")
+            url += "&country=" + country;
+
+        var number = $("#textNumer").val();
+        if (number != "")
+            url += "&number=" + number;
+
+        var phone = $("#textPhone").val();
+        if (phone != "")
+            url += "&phone=" + phone;
+        var mail = $("#textEmail").val();
+        if (mail != "")
+            url += "&mail=" + encodeURI(mail);
+
+        var stime = $("#textStime").val();
+        if (stime != "")
+            url += "&stime=" + encodeURI(stime);
+        window.location.href = url;
+    }
+    function checktg(id)
+    {
+        layer.confirm('此申请人的材料确定符合所申请国家的要求吗？', {
+            btn: ['符合', '不符合']
+        }, function () {
+            var layerid = layer.msg('操作中...', { icon: 16, time: 0, shade: [0.6, '#000', true] });
+            $.ajax({
+                type: 'POST',
+                url: '/Apply/Adopt',
+                data: { id: id },
+                dataType: 'json',
+                success: function (data) {
+                    layer.closeAll();
+                    if (data.status == "1")
+                        window.location.reload();
+                    else
+                        layer.msg("登录超时！", { time: 3000 });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    layer.closeAll();
+                    if (XMLHttpRequest.status == "499")
+                        layer.msg("你没有权限,请联系管理员！", { time: 3000 });
+                    else
+                        layer.msg("保存失败！" + textStatus, { time: 3000 });
+                }
+            });
+        });
+    }
+   
+</script>
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+    </script>
+    @{
+        string burl = Html.Raw(ViewData["vback"]).ToString();
+        string pcs = "";
+        if (burl.IndexOf("?") > -1) 
+        {
+            pcs = burl.Substring(burl.IndexOf("?")+1);
+        }
+    }
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="###">预约管理</a>
+        </li>
+        <li>
+            @if (pcs == "")
+            {
+                <a href="/Apply/List">预约记录</a>
+            }
+            else
+            {
+                <a href="/Apply/List?@pcs">预约记录</a>
+            }
+        </li>
+        <li>
+            申请人信息
+        </li>
+    </ul><!-- /.breadcrumb -->
+</div>
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    @Html.Partial("_PartialSetting")
+    @{
+        string applyurl = System.Configuration.ConfigurationManager.AppSettings["applyurl"];
+    }
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+              
+                @if (pcs == "")
+                {
+                    <a class="btn btn-sm btn-pink" href="/Apply/List" aria-label="Left Align">
+                        返回预约记录
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-sm btn-pink" href="/Apply/List?@pcs" aria-label="Left Align">
+                        返回预约记录
+                    </a>
+                }
+            </p>
+            <table id="simple-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>护照号码</th>
+                        <th>到期日期</th>
+                        <th>当前国籍</th>
+                        <th>电话邮箱</th>
+                        <th>跟踪ID</th>
+                        <th>预约时间</th>
+                        <th>预约序号</th>
+                        <th>目的国家</th>
+                        <th>费用信息</th>
+                        <th>材料初审状态</th>
+                        <th>指纹采集状态</th>
+                        <th>视频采集状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="tr_@item.Id">
+                            <td>@item.Surname @item.Givename <br />@item.Birthdate.ToString("yyyy-MM-dd")</td>
+                            <td>@item.Passport</td>
+                            <td>@item.Expirydate.ToString("yyyy-MM-dd")</td>
+                            <td>@item.Nationality</td>
+                            <td>@item.Cellphone <br/>@item.Email</td>
+                            <td>@item.TransactionId</td>
+                            <td>@item.DateName @item.TimeRange</td>
+                            <td>@item.ApplyNumber</td>
+                            <td>@item.VisitCountry</td>
+                            <td>代收签证费:@item.VisaFee<br />签证服务费:@item.ServiceFee<br />其他服务费:@item.SupportFee<br />VIP费:@item.VIPFee</td>
+                            @if (item.ApStatus == 0)
+                            {
+                                <td>正在审核</td>
+                            }
+                            else
+                            {
+                                <td style="color:#ff0000">材料初审通过</td>
+                            }
+                            @if (item.fingerStatus == 0)
+                            {
+                                <td>未采集</td>
+                            }
+                            else
+                            {
+                                <td style="color:#ff0000">已采集</td>
+                            }
+                            @if (item.videoStatus == 0)
+                            {
+                                <td>未采集</td>
+                            }
+                            else
+                            {
+                                <td style="color:#ff0000">已采集</td>
+                            }
+                            <td>
+                                <div class="hidden-sm hidden-xs btn-group">
+                                    @if (item.ApStatus == 0)
+                                    {
+                                        <a href="javascript:checktg(@item.Id)" class="btn btn-xs btn-info">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>设置材料初审完成
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a  class="btn btn-xs btn-info">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>无操作
+                                        </a>
+                                    }
+                                    <a class="btn btn-xs btn-info" href="@applyurl/visafile/@(item.Surname.Replace(" ","_"))_@(item.Givename.Replace(" ", "_"))_@(item.Id).pdf"  target="_blank">
+                                        <i class="ace-icon fa fa-print bigger-120"></i>打印申请表
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @Html.Raw(ViewData["PageHtml"])
+        </div>
+    </div>
+</div>

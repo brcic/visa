@@ -1,0 +1,77 @@
+﻿@model Visa.Domain.HowToApply
+@{
+    Layout = null;
+}
+
+@{
+    string regionName = ViewContext.RouteData.Values["region"].ToString();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8; IE=9; IE=10; IE=EDGE" />
+   
+    <title>签证信息- 青岛 - 了解您的签证类别</title>
+    <meta name="description" content="Know Your Visa Type">
+    <meta name="keywords" content="Know Your Visa Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @Html.Partial("_PartialCss")
+</head>
+
+<body>
+    <div class="container">
+        @Html.Partial("_PartialHeader")
+        <section class="banner">
+            <div class="wrapper">
+                <div class="breadcrumb padt20">
+                    <ul class="clearfix">
+                        <li><a href="/@regionName/Home"> 首页</a></li>
+                        <li>&gt;</li>
+                        <li><a href="/@regionName/Step/Know_Your_Visa_Type">了解您的签证类别</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="center text_center padt25">
+                    <h1 class="caps c_blue light fbold">了解您的签证类别</h1>
+                </div>
+            </div>
+        </section>
+        <div class="wrapper">
+            <section class="steps">
+                <ul class="step_icons">
+                    <li class="step01 ico marr94"><a href="/@regionName/Step/Know_Your_Visa_Type" name="stepOne" class="ico_active" title="Know Your Visa Type"></a></li>
+                    <li class="step02 ico marr94"><a href="/@regionName/Step/How_To_Apply" name="stepTwo" title="How To Apply"></a></li>
+                    <li class="step03 ico"><a href="after_submission.html" name="stepThree" title="After Submission"></a></li>
+                </ul>
+            </section>
+
+            <!--Responsive-->
+            <div class="home_step_responsive_parent">
+                <div class="home_step_responsive">
+                    <div class="step01 ico"><a href="/@regionName/Step/Know_Your_Visa_Type" name="stepOne" class="ico_active" title="Know Your Visa Type"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step02 ico"><a href="/@regionName/Step/How_To_Apply" name="stepTwo" title="How To Apply"></a></div>
+                </div>
+                <div class="home_step_responsive">
+                    <div class="step03 ico"><a href="after_submission.html" name="stepThree" title="After Submission"></a></div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="wrapper">
+                <div class="pad22 mart15">
+                    <h4 class="tourist_title_main marb15 caps">了解您的签证类别</h4>
+                    <div class="tourist_text">
+                       @Html.Raw(Model.SubmitInPerson)
+                        <div> <a href="/@regionName/Step/How_To_Apply" class="green_bt floatr">下页</a></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>
+</html>

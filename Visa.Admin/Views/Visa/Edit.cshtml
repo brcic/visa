@@ -1,0 +1,138 @@
+﻿@model Visa.Domain.VisaType
+<!-- 样式文件 -->
+<link rel="stylesheet" href="/umeditor/themes/default/css/umeditor.css">
+<!-- 配置文件 -->
+<script type="text/javascript" src="/umeditor/umeditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/umeditor/umeditor.min.js"></script>
+<!-- 语言包文件 -->
+<script type="text/javascript" src="/umeditor/lang/zh-cn/zh-cn.js"></script>
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+		try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="###">签证管理</a>
+        </li>
+        <li>
+            <a href="/Visa/List">签证类别</a>
+        </li>
+        <li>
+            编辑资料
+        </li>
+    </ul><!-- /.breadcrumb -->
+
+</div>
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    @Html.Partial("_PartialSetting")
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            @using (Html.BeginForm("Edit", "Visa", FormMethod.Post, new { @id = "frmAdd", @name = "frmAdd", @role = "form", @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                 <!-- #section:elements.form -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="TypeName">类别名称</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.TypeName, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="EngName">英文名</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.EngName, new { @class = "col-xs-10 col-sm-3" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="RegionCode">国家</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.RegionCode, ViewData["vcountry"] as List<SelectListItem>)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="Overview">概述</label>
+                    <div class="col-sm-10">
+                        <script id="containerOverview" name="containerOverview" type="text/plain" style="width:800px;height:360px;">
+                            @Html.Raw(Model.Overview)
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="VisaFee">签证费</label>
+                    <div class="col-sm-10">
+                        <!-- 加载编辑器的容器 -->
+                        <script id="containerVisaFee" name="containerVisaFee" type="text/plain" style="width:800px;height:360px;">
+                            @Html.Raw(Model.VisaFee)
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="DocumentRequired">所需资料</label>
+                    <div class="col-sm-10">
+                        <script id="containerDocumentRequire" name="containerDocumentRequire" type="text/plain" style="width:800px;height:200px;">
+                            @Html.Raw(Model.DocumentRequired)
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="PhotoSpecification">照片规格</label>
+                    <div class="col-sm-10">
+                        <script id="containerPhoto" name="containerPhoto" type="text/plain" style="width:800px;height:360px;">
+                            @Html.Raw(Model.PhotoSpecification)
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="ProcessingTime">审理时间</label>
+                    <div class="col-sm-10">
+                        <script id="containerProcessing" name="containerProcessing" type="text/plain" style="width:800px;height:200px;">
+                            @Html.Raw(Model.ProcessingTime)
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="DownloadForm">表格下载</label>
+                    <div class="col-sm-10">
+                        <script id="containerDownload" name="containerDownload" type="text/plain" style="width:800px;height:200px;">
+                            @Html.Raw(Model.DownloadForm)
+                        </script>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-2 col-md-9">
+                        <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-120"></i>
+                            保存
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <a class="btn" href="javascript:history.go(-1)">
+                            <i class="fa fa-arrow-left bigger-120"></i>
+                            返回
+                        </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- 实例化编辑器代码 -->
+<script type="text/javascript">
+    $(function () {
+        var serverPath = '';
+        UM.getEditor('containerOverview', { imageUrl: "/vFile/mUpload", imagePath: serverPath, autoHeightEnabled: false });
+        UM.getEditor('containerVisaFee', { imageUrl: "/vFile/mUpload", imagePath: serverPath, autoHeightEnabled: false });
+        UM.getEditor('containerDocumentRequire', { imageUrl: "/vFile/mUpload", imagePath: serverPath, autoHeightEnabled: false });
+        UM.getEditor('containerPhoto', { imageUrl: "/vFile/mUpload", imagePath: serverPath, autoHeightEnabled: false });
+        UM.getEditor('containerProcessing', { imageUrl: "/vFile/mUpload", imagePath: serverPath, autoHeightEnabled: false });
+        UM.getEditor('containerDownload', { imageUrl: "/vFile/mUpload", imagePath: serverPath, autoHeightEnabled: false });
+    });
+</script>

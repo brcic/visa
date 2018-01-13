@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>帮助</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/global.css" media="all">
+    <link rel="stylesheet" href="/css/laycustom.css" media="all">
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        @Html.Partial("_PartialHeader")
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <h2 class="projecttitle">帮助</h2>
+                <h5><b>1.预约:</b>请点击左边菜单中的"预约"进行操作. 预约包括以下步骤:</h5>
+                <ul class="helpul">
+                    <li>选择国家(此功能仅供咨询中心员工使用，不适用于个人申请和旅行社中介代理人.)</li>
+                    <li>选择提交申请的签证申请中心：</li>
+                    <li>选择签证类型</li>
+                    <li>选择预约日期和时间：请您在添加申请人信息后点击"继续"，即将为您跳转至预约日期及时间界面，您可在该界面看到可选则的预约日期为绿色，节假日为红色.</li>
+                    <li>请您选择日期和时间并点击"确认".</li>
+                    <li>确认预约：请点击"确认".</li>
+                    <li>在确认预约后,您将收到一封预约确认电子邮件.</li>
+                </ul>
+                <h5><b>2.重新预约:</b>您需持有有效预约的预约确认确认号码以便进行操作.请您点击"重新预约".</h5>
+                <ul class="helpul">
+                    <li>您需先选中申请人来进行重新预约，并且点击"重新预约"选择时间和日期</li>
+                    <li>在选择了提交申请的日期和时间后，请点击"确认"进行确认.</li>
+                    <li>将出现预约确认信息</li>
+                    <li>您将收到一封电子邮件.</li>
+                </ul>
+                <h5><b>3.取消预约:</b>您需持有有效预约的预约确认确认号码以便进行操作.请您点击"取消预约".</h5>
+                <ul class="helpul">
+                    <li>请输入预约确认号码并点击"提交"获取申请人信息.</li>
+                    <li>请您选择您打算取消预约的申请人并点击"继续".</li>
+                    <li>将出现预约取消信息.</li>
+                    <li>您将收到一封电子邮件.</li>
+
+                </ul>
+                <h5><b>4.打印预约信：</b>请您输入有效预约的确认号码后，点击"打印预约信".</h5>
+                <ul class="helpul">
+                    <li>请您选择预约信的申请人信息并点击”下载预约信“.</li>
+                    <li>选择申请人并点击”打印申请表“.(打印纸质文件后，复选框项目手动打勾)</li>
+                    <li style="color:#ff0000">没有预约信和签证申请表签证中心不予处理你的签证申请.</li>
+                </ul>
+              
+            </div>
+           
+        </div>
+        @Html.Partial("_PartialFooter")
+      </div>
+</body>
+</html>
